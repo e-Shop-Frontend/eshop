@@ -12,4 +12,19 @@ body {
   .bg-grad {
     @apply bg-gradient-to-b from-[#008E56] to-[#FFF62C];
   }
+  .max-width1 {
+    @apply max-w-6xl mx-auto p-4;
+  }
+  .text-pry {
+    @apply text-[#FFF62C];
+  }
+  .text-sec {
+    @apply text-[#008E56];
+  }
+  .bg-pry {
+    @apply bg-[#FFF62C];
+  }
+  .bg-sec {
+    @apply bg-[#008E56];
+  }
 }
