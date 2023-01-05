@@ -9,18 +9,18 @@ const Sidebar = ({ isSidebarOpen, closeSidebar, navItems }) => {
     <aside
       className={`${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } fixed w-full h-screen bg-white top-0 right-0 transition p-8 bg-opacity-75 lg:hidden`}
+      } fixed w-full h-screen bg-white top-0 right-0 transition p-8 bg-opacity-90 lg:hidden`}
     >
       <i onClick={closeSidebar} className='text-2xl flex justify-end'>
         <MdOutlineClose className='' />
       </i>
       <img src={logo} alt='' />
-      <div className='flex flex-col gap-8 my-10'>
+      <div className='flex flex-col gap-6 my-10'>
         {navItems.map(({ url, title }, index) => {
           return (
             <Link
               key={index}
-              className='block whitespace-nowrap text-lg font-medium capitalize'
+              className='block whitespace-nowrap text-lg font-medium capitalize border-b-2 py-4'
               to={url}
             >
               {title}
