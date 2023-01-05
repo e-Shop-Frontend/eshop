@@ -9,7 +9,7 @@ const Sidebar = ({ isSidebarOpen, closeSidebar, navItems }) => {
     <aside
       className={`${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } fixed w-full h-screen bg-white top-0 right-0 transition p-8 bg-opacity-95 lg:hidden`}
+      } fixed w-full h-screen bg-white top-0 right-0 transition p-8 lg:hidden`}
     >
       <i onClick={closeSidebar} className='text-2xl flex justify-end'>
         <MdOutlineClose className='' />
