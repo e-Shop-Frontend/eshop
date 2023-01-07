@@ -24,8 +24,8 @@ const Nav = () => {
     <div className='bg-sec border-b-[1px] border-b-green-100 shadow-xl'>
       <div className='max-width1 flex items-center justify-between'>
         <div className='flex justify-between w-full lg:w-fit items-center'>
-          <img className='w-14' src={logo} alt='logo' />
-          <i className='text-pry text-xl lg:hidden' onClick={openSidebar}>
+          <img className='w-20' src={logo} alt='logo' />
+          <i className='text-pry text-2xl lg:hidden' onClick={openSidebar}>
             <RxHamburgerMenu />
           </i>
         </div>

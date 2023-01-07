@@ -21,8 +21,8 @@ const Rate = () => {
         <div className='bg-white rounded-md p-5 shadow-xl'>
           <input
             type='text'
-            className='block w-full border-b py-2 my-4'
-            placeholder='Weigth of Shipment'
+            className='block w-full border-b p-2 my-4'
+            placeholder='Weight of Shipment'
           />
           <div className='flex justify-between gap-4'>
             <h2 className='font-medium'>Shipping Rate</h2>
@@ -34,6 +34,8 @@ const Rate = () => {
             name=''
             id=''
           >
+            <option value=''>Select Pickup</option>
+            <option value=''>Ibadan Pickup</option>
             <option value=''>Lagos Pickup</option>
           </select>
 

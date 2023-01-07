@@ -9,12 +9,12 @@ const Sidebar = ({ isSidebarOpen, closeSidebar, navItems }) => {
     <aside
       className={`${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } fixed w-full h-screen bg-white top-0 right-0 transition p-8 lg:hidden`}
+      } fixed w-full h-screen bg-white top-0 right-0 transition p-8 lg:hidden z-10`}
     >
       <i onClick={closeSidebar} className='text-2xl flex justify-end'>
         <MdOutlineClose className='' />
       </i>
-      <img src={logo} alt='' />
+      <img src={logo} className='w-40' alt='' />
       <div className='flex flex-col gap-6 my-10'>
         {navItems.map(({ url, title }, index) => {
           return (
