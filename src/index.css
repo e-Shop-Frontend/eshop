@@ -13,7 +13,7 @@ body {
     @apply bg-gradient-to-b from-[#008E56] to-[#FFF62C];
   }
   .max-width1 {
-    @apply max-w-6xl mx-auto p-4;
+    @apply max-w-7xl mx-auto p-4;
   }
   .text-pry {
     @apply text-[#FFF62C];

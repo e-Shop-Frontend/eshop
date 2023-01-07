@@ -55,46 +55,48 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 bg-sec p-8 gap-4'>
-      {footerLinks.map(({ title, subLinks }, index) => {
-        if (index === 0) {
-          return (
-            <div key={index} className='flex flex-col items-center mb-10'>
-              <img src={logo} className='w-32' alt='' />
-              <div className='flex gap-4 items-center'>
-                {socials.map(({ img, url }, index) => (
-                  <a key={index} href={url} target={"__blank"}>
-                    <img src={img} className='w-6' alt={url} />
-                  </a>
-                ))}
+    <footer className='bg-sec p-8 gap-4'>
+      <div className='max-width1 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 '>
+        {footerLinks.map(({ title, subLinks }, index) => {
+          if (index === 0) {
+            return (
+              <div key={index} className='flex flex-col items-center mb-10'>
+                <img src={logo} className='w-32' alt='' />
+                <div className='flex gap-4 items-center'>
+                  {socials.map(({ img, url }, index) => (
+                    <a key={index} href={url} target={"__blank"}>
+                      <img src={img} className='w-6' alt={url} />
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-        } else
-          return (
-            <div key={index}>
-              <h2 className='text-base font-bold text-white uppercase'>
-                {title}
-              </h2>
-              <div className='flex flex-col gap-3 my-6'>
-                {subLinks.map(({ heading, url, img }, i) => (
-                  <div key={i} className='flex gap-3 items-center'>
-                    {img && (
-                      <img
-                        src={img}
-                        className='w-7 h-7 object-contain'
-                        alt='master'
-                      />
-                    )}
-                    <Link to={url} className='text-xs text-white'>
-                      {heading}
-                    </Link>
-                  </div>
-                ))}
+            );
+          } else
+            return (
+              <div key={index}>
+                <h2 className='text-base font-bold text-white uppercase'>
+                  {title}
+                </h2>
+                <div className='flex flex-col gap-3 my-6'>
+                  {subLinks.map(({ heading, url, img }, i) => (
+                    <div key={i} className='flex gap-3 items-center'>
+                      {img && (
+                        <img
+                          src={img}
+                          className='w-7 h-7 object-contain'
+                          alt='master'
+                        />
+                      )}
+                      <Link to={url} className='text-xs text-white'>
+                        {heading}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-      })}
+            );
+        })}
+      </div>
     </footer>
   );
 };
