@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "../Components/Layout/Footer";
-import Nav from "../Components/Layout/Nav";
+import Footer from "../../Components/Layout/Footer";
+import Nav from "../../Components/Layout/Nav";
 
 const LandingPage = () => {
   return (

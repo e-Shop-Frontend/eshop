@@ -29,8 +29,12 @@ const Sidebar = ({ isSidebarOpen, closeSidebar, navItems }) => {
         })}
       </div>
       <div className='flex gap-4 items-center my-10'>
-        <Btn className='bg-white' text='Login' />
-        <Btn className='bg-pry' text='Create Account' />
+        <Link to='/login'>
+          <Btn className='bg-white' text='Login' />
+        </Link>
+        <Link to='/signup'>
+          <Btn className='bg-pry' text='Create Account' />
+        </Link>
       </div>
     </aside>
   );
