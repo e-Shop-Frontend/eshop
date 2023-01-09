@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import bg from "../../Assets/images/signin-bg.png";
-import google from "../../Assets/images/google.png";
 import Input from "../../Components/Form/Input";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Btn from "../../Components/Button/btn";
 const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const navigate = useNavigate();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/dashboard");
+  };
   return (
     <div className='relative flex'>
       <div className='bg-sec h-screen md:block hidden w-[35%] p-12 top-0 left-0'>
@@ -34,7 +38,7 @@ const Login = () => {
         </p>
 
         <div className='flex items-center gap-2'>
-          <form action='' className='w-full'>
+          <form action='' className='w-full' onSubmit={handleLogin}>
             <Input
               input
               id='email'
@@ -72,6 +76,12 @@ const Login = () => {
                 Sign up
               </Link>
             </h2>
+            <Link to='/' className='flex items-center text-sm my-5'>
+              <i>
+                <IoIosArrowBack />
+              </i>
+              <h2>Back to Homepage</h2>
+            </Link>
           </form>
         </div>
       </div>

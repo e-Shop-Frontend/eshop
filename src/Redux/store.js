@@ -5,9 +5,11 @@ import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import storage from "redux-persist/lib/storage";
+import dashboardReducer from "./features/dashboardSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  dashboard: dashboardReducer,
 });
 
 const persistConfig = {

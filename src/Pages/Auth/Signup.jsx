@@ -10,7 +10,7 @@ const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   return (
     <div className='relative flex'>
-      <div className='bg-sec h-screen md:block hidden w-[35%] p-12 top-0 left-0'>
+      <div className='bg-sec h-screen md:block hidden w-[35%] p-12 fixed top-0 left-0'>
         <div className='relative z-10'>
           <p className='font-medium text-2xl lg:text-[2.2rem] leading-[3rem] text-white'>
             Buy and Ship from your Favorites Stores In US and have them
@@ -26,7 +26,7 @@ const Signup = () => {
           className='absolute top-0 left-0 h-screen w-fit'
         />
       </div>
-      <div className='md:w-[65%] ml-auto h-[600px]  justify-center my-5 p-8 overflow-y-scroll'>
+      <div className='md:w-[65%] ml-auto justify-center my-5 p-8'>
         <h2 className='font-bold text-2xl'>Create an Account</h2>
         <p className='text-sm my-3'>
           To get started fill in your information or sign up with google
