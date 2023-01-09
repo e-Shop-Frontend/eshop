@@ -18,7 +18,7 @@ const Shipment = ({ nextSlide }) => {
         {details.map(({ name, value }, i) => {
           return (
             <div key={i} className='bg-white rounded-md shadow-md p-8'>
-              <h2 className='text-center text-sm md:text-lg font-medium'>
+              <h2 className='text-center text-sm md:text-base font-medium'>
                 {name}
               </h2>
               <h2 className='text-center text-2xl md:text-4xl font-medium'>

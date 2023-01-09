@@ -15,10 +15,10 @@ const AppRoutes = () => {
           <Route index element={<Home />} />
         </Route>
         <Route path='/signup' element={<Signup />} />
-        {/* <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />}>
           <Route index element={<DashboardHome />} />
-        </Route> */}
+        </Route>
         <Route path='*' element={<h2>404</h2>} />
       </Routes>
     </Router>
