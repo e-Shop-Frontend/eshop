@@ -4,11 +4,15 @@ import { menus } from "../../../Utils/dashboardMenu";
 import { CiLogout } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../../Redux/features/dashboardSlice";
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen }) => {
   const dispatch = useDispatch();
   const logout = () => {};
   return (
-    <div className='fixed top-0 hidden md:block w-[30%] lg:w-[20%] bg-sec text-white h-screen p-8 pt-28'>
+    <div
+      className={`fixed top-0 ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } md:translate-x-0 transition md:w-[30%] lg:w-[20%] bg-sec text-white h-screen p-8 pt-28`}
+    >
       {menus.map(({ menu, url, img }, i) => {
         return (
           <Link

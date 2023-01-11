@@ -3,14 +3,22 @@ import { useSelector } from "react-redux";
 import logo from "../../../Assets/images/logo.png";
 import { IoNotificationsOutline } from "react-icons/io5";
 import profile from "../../../Assets/images/profile.jpg";
-const Header = () => {
+const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { dashLocation } = useSelector((state) => state.dashboard);
   return (
     <header className='bg-white shadow-md fixed top-0 right-0 w-full z-10'>
       <div className='max-width1 flex justify-between gap-4 font-medium text-sm'>
-        <div className='flex gap-4 items-center'>
-          <img className='w-20' src={logo} alt='logo' />
-          <h2 className='uppercase'>{dashLocation}</h2>
+        <div>
+          <div className='flex gap-4 items-center'>
+            <img className='w-20' src={logo} alt='logo' />
+            <h2 className='uppercase'>{dashLocation}</h2>
+          </div>
+          <h2
+            className='text-xs text-sec italic underline md:hidden'
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          >
+            {isSidebarOpen ? "Close Menu" : "Open Menu"}
+          </h2>
         </div>
 
         <div className='flex items-center gap-2'>
