@@ -14,7 +14,7 @@ const Home = () => {
   };
   return (
     <div className=''>
-      {/* {activeSlide === 0 ? (
+      {activeSlide === 0 ? (
         <Shipment nextSlide={nextSlide} />
       ) : activeSlide === 1 ? (
         <CreateShipment
@@ -30,7 +30,7 @@ const Home = () => {
         />
       ) : (
         <Address nextSlide={nextSlide} />
-      )} */}
+      )}
     </div>
   );
 };
