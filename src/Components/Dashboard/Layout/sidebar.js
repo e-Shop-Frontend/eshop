@@ -11,7 +11,7 @@ const Sidebar = ({ isSidebarOpen }) => {
     <div
       className={`fixed top-0 ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 transition md:w-[30%] lg:w-[20%] bg-sec text-white h-screen p-8 pt-28`}
+      } md:translate-x-0 transition w-full md:w-[30%] lg:w-[20%] bg-sec text-white h-screen p-8 pt-28`}
     >
       {menus.map(({ menu, url, img }, i) => {
         return (
