@@ -8,7 +8,7 @@ import referral from "../Assets/images/referral.png";
 export const menus = [
   { menu: "Home", url: "/dashboard", img: dash },
   { menu: "Order Info", url: "/dashboard", img: order },
-  { menu: "Virtual Card", url: "/dashboard", img: card },
+  { menu: "Virtual Card", url: "virtual-card", img: card },
   { menu: "Wallet", url: "/dashboard", img: wallet },
   { menu: "Delivery Calculator", url: "/dashboard", img: delivery },
   { menu: "Profile", url: "/dashboard", img: profile },

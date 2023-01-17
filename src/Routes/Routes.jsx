@@ -6,6 +6,7 @@ import LandingPage from "../Pages/LandingPage";
 import Login from "../Pages/Auth/Login";
 import Signup from "../Pages/Auth/Signup";
 import Dashboard from "../Pages/Dashboard";
+import Virtual from "../Pages/Dashboard/Virtual";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />}>
           <Route index element={<DashboardHome />} />
+          <Route path='virtual-card' element={<Virtual />} />
         </Route>
         <Route path='*' element={<h2>404</h2>} />
       </Routes>
