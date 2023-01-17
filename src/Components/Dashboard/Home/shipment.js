@@ -8,7 +8,6 @@ const Shipment = ({ nextSlide }) => {
     { name: "Cancelled Shipments", value: 0 },
     { name: "Processed Shipments", value: 0 },
     { name: "Delivered Shipments", value: 0 },
-    { name: "Processed Shipments", value: 0 },
   ];
   return (
     <div>
