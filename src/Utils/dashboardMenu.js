@@ -11,6 +11,6 @@ export const menus = [
   { menu: "Virtual Card", url: "virtual-card", img: card },
   { menu: "Wallet", url: "/dashboard", img: wallet },
   { menu: "Delivery Calculator", url: "/dashboard", img: delivery },
-  { menu: "Profile", url: "/dashboard", img: profile },
+  { menu: "Profile", url: "profile", img: profile },
   { menu: "Referral", url: "/dashboard", img: referral },
 ];

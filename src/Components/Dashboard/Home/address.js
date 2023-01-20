@@ -9,7 +9,8 @@ const Address = ({ nextSlide }) => {
       <div className='bg-white w-full rounded-md shadow-md p-8'>
         <h2 className='text-center my-6'>
           Use the information below as your shipping address when shopping
-          online. We’ll receive and process the package in your name.
+          online. Please add the unique code to your name. We’ll receive and
+          process the package in your name.
         </h2>
         <form action='' className='w-full'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>

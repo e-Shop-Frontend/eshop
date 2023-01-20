@@ -33,8 +33,9 @@ const CreateShipment = ({ nextSlide, handleInputChange, inputItems }) => {
             value={inputItems.store_name || ""}
           />
           <Input
-            input
             id='category'
+            dropdown
+            data={["Clothing", "Bags", "Shoes ", "Furniture", "Others"]}
             type='text'
             className={"bg-gray-100"}
             title='Category'

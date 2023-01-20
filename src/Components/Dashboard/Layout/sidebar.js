@@ -4,14 +4,14 @@ import { menus } from "../../../Utils/dashboardMenu";
 import { CiLogout } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../../Redux/features/dashboardSlice";
-const Sidebar = ({ isSidebarOpen }) => {
+const Sidebar = ({ isSidebarOpen, closeSidebar }) => {
   const dispatch = useDispatch();
   const logout = () => {};
   return (
     <div
       className={`fixed top-0 ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 transition w-full md:w-[30%] lg:w-[20%] bg-sec text-white h-screen p-8 pt-28`}
+      } md:translate-x-0 transition w-[80%] md:w-[30%] lg:w-[20%] bg-sec text-white h-screen p-8 pt-28 z-10`}
     >
       {menus.map(({ menu, url, img }, i) => {
         return (
@@ -19,7 +19,10 @@ const Sidebar = ({ isSidebarOpen }) => {
             className='flex items-center gap-4 my-8'
             to={url}
             key={i}
-            onClick={() => dispatch(setLocation(menu))}
+            onClick={() => {
+              dispatch(setLocation(menu));
+              closeSidebar();
+            }}
           >
             <img className='w-5' src={img} alt={menu} />
             <h2 className='text-sm font-medium'>{menu}</h2>

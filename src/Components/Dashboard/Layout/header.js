@@ -6,7 +6,7 @@ import profile from "../../../Assets/images/profile.jpg";
 const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { dashLocation } = useSelector((state) => state.dashboard);
   return (
-    <header className='bg-white shadow-md fixed top-0 right-0 w-full z-10'>
+    <header className='bg-white shadow-md fixed top-0 right-0 w-full z-20'>
       <div className='max-width1 flex justify-between gap-4 font-medium text-sm'>
         <div>
           <div className='flex gap-4 items-center'>

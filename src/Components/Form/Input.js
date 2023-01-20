@@ -18,7 +18,7 @@ const Input = ({
   password,
 }) => {
   return (
-    <div className={`${check ? "flex gap-2 items-center" : "block"} my-4`}>
+    <div className={`${check ? "flex gap-2 items-center" : "block"} my-2`}>
       <label className='text-black text-sm block' htmlFor={id}>
         {title}
       </label>

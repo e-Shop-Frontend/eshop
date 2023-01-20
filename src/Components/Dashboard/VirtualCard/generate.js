@@ -10,7 +10,7 @@ const Generate = ({ nextSlide }) => {
     <div>
       <h2 className='font-medium text-2xl'>Generate Virtual Dollar Card</h2>
       <p className='text-base my-2'>
-        Kisdly fill out the informations correctly.
+        Kindly fill out the informations correctly.
       </p>
       <form onSubmit={handleSubmit}>
         <Input
