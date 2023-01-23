@@ -12,5 +12,5 @@ export const menus = [
   { menu: "Wallet", url: "/dashboard", img: wallet },
   { menu: "Delivery Calculator", url: "/dashboard", img: delivery },
   { menu: "Profile", url: "profile", img: profile },
-  { menu: "Referral", url: "/dashboard", img: referral },
+  { menu: "Referral", url: "referral", img: referral },
 ];
