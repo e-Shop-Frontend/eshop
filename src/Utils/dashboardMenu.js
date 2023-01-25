@@ -9,7 +9,7 @@ export const menus = [
   { menu: "Home", url: "/dashboard", img: dash },
   { menu: "Order Info", url: "/dashboard", img: order },
   { menu: "Virtual Card", url: "virtual-card", img: card },
-  { menu: "Wallet", url: "/dashboard", img: wallet },
+  { menu: "Wallet", url: "wallet", img: wallet },
   { menu: "Delivery Calculator", url: "/dashboard", img: delivery },
   { menu: "Profile", url: "profile", img: profile },
   { menu: "Referral", url: "referral", img: referral },
