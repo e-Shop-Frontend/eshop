@@ -5,6 +5,8 @@ import trans from "../../Assets/images/trans.png";
 import { useState } from "react";
 import FundExisting from "../../Components/Dashboard/Wallet/FundExisting";
 import Success from "../../Components/Dashboard/Wallet/success";
+import CreditWallet from "../../Components/Dashboard/Wallet/CreditWallet";
+import FundNew from "../../Components/Dashboard/Wallet/FundNew";
 
 const Wallet = () => {
   const walletArr = [
@@ -16,7 +18,7 @@ const Wallet = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   return (
     <div>
-      {selectedIndex !== "success" && (
+      {selectedIndex !== "success" && selectedIndex !== 0 && (
         <div>
           <h2 className='text-xl font-medium'>Wallet</h2>
           <p className='text-sm my-3'>
@@ -34,11 +36,10 @@ const Wallet = () => {
           {walletArr.map(({ title, img }, i) => {
             return (
               <div
-                className='flex gap-2 items-center my-5 hover:scale-95'
+                className='flex gap-2 items-center my-5 hover:scale-95 transition cursor-pointer'
                 key={i}
                 onClick={() => {
                   setSelectedIndex(i);
-                  console.log(selectedIndex);
                 }}
               >
                 <div className='bg-green-200 rounded-full p-3'>
@@ -56,9 +57,12 @@ const Wallet = () => {
           })}
         </div>
       )}
-      {selectedIndex === 0 && <div></div>}
+      {selectedIndex === 0 && <FundNew />}
       {selectedIndex === 1 && (
         <FundExisting setSelectedIndex={setSelectedIndex} />
+      )}
+      {selectedIndex === 2 && (
+        <CreditWallet setSelectedIndex={setSelectedIndex} />
       )}
       {selectedIndex === "success" && (
         <Success setSelectedIndex={setSelectedIndex} />
