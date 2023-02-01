@@ -43,6 +43,20 @@ const CreateShipment = ({ nextSlide, handleInputChange, inputItems }) => {
             setItem={handleInputChange}
             value={inputItems.category || ""}
           />
+          <h2 className='italic text-xs -mt-2'>
+            Note: Choose others if category is more than one.
+          </h2>
+          <Input
+            input
+            id='specification'
+            type='text'
+            className={"bg-gray-100"}
+            title='Specification'
+            placeholder={"e.g Two shoes and two bags "}
+            required={true}
+            setItem={handleInputChange}
+            value={inputItems.specification || ""}
+          />
           <Input
             input
             id='quantity'

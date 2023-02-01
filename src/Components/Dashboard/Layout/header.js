@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import logo from "../../../Assets/images/logo.png";
 import { IoNotificationsOutline } from "react-icons/io5";
 import profile from "../../../Assets/images/profile.jpg";
+import { Greet } from "../../../Utils/getDate";
 const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { dashLocation } = useSelector((state) => state.dashboard);
   return (
@@ -13,18 +14,14 @@ const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
             <img className='w-20' src={logo} alt='logo' />
             <h2 className='uppercase'>{dashLocation}</h2>
           </div>
-          <h2
-            className='text-xs text-sec italic underline md:hidden'
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          >
-            {isSidebarOpen ? "Close Menu" : "Open Menu"}
-          </h2>
         </div>
 
         <div className='flex items-center gap-2'>
           {/* <Btn text={"Logout"} className='bg-pry' /> */}
           <div className='flex items-center gap-2'>
-            <h2 className='hidden md:block'>Notifications</h2>
+            <div className='hidden sm:block'>
+              <Greet user={"John"} />
+            </div>
             <i className='flex items-center'>
               <IoNotificationsOutline className='text-xl' />
               <h2 className='text-xs bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center -translate-y-2 -translate-x-3'>
@@ -39,6 +36,12 @@ const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
           />
         </div>
       </div>
+      <h2
+        className='text-xs text-sec italic underline md:hidden px-6 py-3 -mt-7'
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? "Close Menu" : "Open Menu"}
+      </h2>
     </header>
   );
 };

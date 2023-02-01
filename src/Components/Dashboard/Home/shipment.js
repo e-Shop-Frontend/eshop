@@ -1,5 +1,7 @@
 import React from "react";
 import Btn from "../../Button/btn";
+import amico from "../../../Assets/images/amico.png";
+import track from "../../../Assets/images/track.png";
 
 const Shipment = ({ nextSlide }) => {
   const details = [
@@ -26,6 +28,38 @@ const Shipment = ({ nextSlide }) => {
             </div>
           );
         })}
+      </div>
+      <div className='my-6'>
+        <h2 className='font-medium text-lg'>Helpful Resources</h2>
+        <div className='grid grid-cols-1 sm:grid-cols-2 my-6 gap-4'>
+          <div className='rounded-md border shadow-md p-6'>
+            <div className='flex items-center justify-center'>
+              <img src={amico} className='w-[214px]' alt='amico' />
+            </div>
+            <h2 className='font-medium my-3'>
+              How to use eshopAfrica US address
+            </h2>
+            <p className='text-sm'>
+              Checkout from online stores and get your item delivered to oue US
+              address.
+            </p>
+            <p className='text-sec my-3 text-right font-medium text-xs'>
+              Learn More
+            </p>
+          </div>
+          <div className='rounded-md border shadow-md p-6'>
+            <div className='flex items-center justify-center'>
+              <img src={track} className='w-[214px]' alt='amico' />
+            </div>
+            <h2 className='font-medium my-3'>Track your shipment</h2>
+            <p className='text-sm'>
+              Get real tracking update on your shipment on the go.
+            </p>
+            <p className='text-sec my-3 text-right font-medium text-xs'>
+              Track now
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

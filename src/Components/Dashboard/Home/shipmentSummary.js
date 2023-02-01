@@ -38,6 +38,19 @@ const ShipmentSummary = ({ nextSlide, inputItems, setActiveSlide }) => {
           </button>
         </div>
         <div className='border-b p-2 flex items-center justify-between gap-2 font-medium text-xs md:text-sm'>
+          <h2>Specification:</h2>
+          <h2 className='text-gray-600'>{inputItems.category}</h2>
+          <button
+            className='flex items-center p-2 rounded-md bg-pry text-black gap-2'
+            onClick={prevSlide}
+          >
+            <h2 className='text-xs hidden md:block'>Edit</h2>
+            <i>
+              <AiOutlineEdit />
+            </i>
+          </button>
+        </div>
+        <div className='border-b p-2 flex items-center justify-between gap-2 font-medium text-xs md:text-sm'>
           <h2>Quantity:</h2>
           <h2 className='text-gray-600'>{inputItems.quantity}</h2>
           <button
