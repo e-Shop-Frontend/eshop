@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Form from "../../Components/Dashboard/Profile/form";
 import Base from "../../Components/Dashboard/Profile/base";
-import { Greet, TodayDate } from "../../Utils/getDate";
-import { BsCalendarDate } from "react-icons/bs";
+import Last from "../../Components/Dashboard/Profile/last";
 
 const Profile = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -14,22 +13,17 @@ const Profile = () => {
     setActiveSlide(activeSlide - 1);
   };
 
-  const handleInputChange = (e) => {
-    setInputItems({ ...inputItems, [e.target.name]: e.target.value });
-  };
+  // const handleInputChange = (e) => {
+  //   setInputItems({ ...inputItems, [e.target.name]: e.target.value });
+  // };
   return (
     <div>
-      <div className='flex flex-col md:flex-row justify-between gap-4 md:items-center border-b-2 py-4'>
-        <div>
-          <Greet user={"John"} />
-        </div>
-        <div className='flex gap-2 items-center'>
-          <BsCalendarDate />
-          <TodayDate />
-        </div>
-      </div>
+      <h2 className='text-2xl font-medium'>Profile</h2>
+      <h4 className='text-base my-4 font-medium'>Personal Information</h4>
+      <hr />
       {activeSlide === 0 && <Base nextSlide={nextSlide} />}
-      {activeSlide === 1 && <Form />}
+      {activeSlide === 1 && <Form nextSlide={nextSlide} />}
+      {activeSlide === 2 && <Last prevSlide={prevSlide} />}
     </div>
   );
 };

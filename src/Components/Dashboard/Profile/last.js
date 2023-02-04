@@ -3,7 +3,7 @@ import React from "react";
 // import doc from "../../../Assets/images/doc.png";
 import Btn from "../../Button/btn";
 import profile from "../../../Assets/images/profile.jpg";
-const Base = ({ nextSlide }) => {
+const Last = ({ prevSlide }) => {
   return (
     <div>
       <div className='my-5'>
@@ -40,10 +40,10 @@ const Base = ({ nextSlide }) => {
           </h2>
         </div>
 
-        <Btn text={"Edit"} className='bg-pry' onClick={() => nextSlide()} />
+        <Btn text={"Edit"} className='bg-pry' onClick={prevSlide} />
       </div>
     </div>
   );
 };
 
-export default Base;
+export default Last;

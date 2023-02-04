@@ -32,7 +32,7 @@ const Generate = ({ nextSlide }) => {
         <Input
           title='Date of Birth'
           id='dob'
-          type='text'
+          type='date'
           input
           required={true}
           className='border-2'

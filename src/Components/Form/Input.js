@@ -36,7 +36,7 @@ const Input = ({
       )}
       {textarea && (
         <textarea
-          className='block w-full bg-gray-100 my-2 text-sm'
+          className={`w-full rounded-md block p-4 my-2 text-sm ${className}`}
           name={id}
           id=''
           cols='30'
@@ -48,7 +48,7 @@ const Input = ({
       )}
       {dropdown && (
         <select
-          className='w-full bg-gray-100 p-4 my-2 text-sm'
+          className={`w-full rounded-md block p-4 my-2 text-sm ${className}`}
           name={id}
           id=''
           onChange={setItem}

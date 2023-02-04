@@ -57,11 +57,12 @@ const Referral = () => {
                 <h2 className='my-4 text-sm'>Total Referral: 0</h2>
               </div>
             ) : (
-              <div className='flex flex-col items-center justify-center'>
-                <img className='w-16' src={warn} alt='warning' />
-                <p className='text-sm font-medium my-4'>
+              <div className='flex flex-col items-center justify-center my-4'>
+                <img className='w-28' src={warn} alt='warning' />
+                <p className='text-lg font-bold'>
                   You do not have any referral yet
                 </p>
+                <p className='text-sm'>Check back later</p>
               </div>
             )}
           </div>

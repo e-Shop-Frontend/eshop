@@ -1,31 +1,16 @@
 import React, { useState } from "react";
-import bg from "../../Assets/images/signin-bg.png";
 import google from "../../Assets/images/google.png";
 import Input from "../../Components/Form/Input";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Btn from "../../Components/Button/btn";
+import Sidebar from "../../Components/Auth/sidebar";
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   return (
     <div className='relative flex'>
-      <div className='bg-sec h-screen md:block hidden w-[35%] p-12 fixed top-0 left-0'>
-        <div className='relative z-10'>
-          <p className='font-medium text-2xl lg:text-[2.2rem] leading-[3rem] text-white'>
-            Buy and Ship from your Favorites Stores In US and have them
-            Delivered to your Doorstep.
-          </p>
-          <p className='font-medium text-lg text-white my-4'>
-            Save up to 95% on international shipping and tax.
-          </p>
-        </div>
-        <img
-          src={bg}
-          alt='bg'
-          className='absolute top-0 left-0 h-screen w-fit'
-        />
-      </div>
+      <Sidebar />
       <div className='md:w-[65%] ml-auto justify-center my-5 p-8'>
         <h2 className='font-bold text-2xl'>Create an Account</h2>
         <p className='text-sm my-3'>

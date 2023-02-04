@@ -10,6 +10,7 @@ import Virtual from "../Pages/Dashboard/Virtual";
 import Profile from "../Pages/Dashboard/Profile";
 import Referral from "../Pages/Dashboard/Referral";
 import Wallet from "../Pages/Dashboard/Wallet";
+import Address from "../Pages/Dashboard/Address";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
           <Route path='referral' element={<Referral />} />
           <Route path='profile' element={<Profile />} />
           <Route path='wallet' element={<Wallet />} />
+          <Route path='address' element={<Address />} />
         </Route>
         <Route path='*' element={<h2>404</h2>} />
       </Routes>
