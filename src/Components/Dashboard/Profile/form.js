@@ -1,11 +1,22 @@
 import React from "react";
 import Btn from "../../Button/btn";
 import Input from "../../Form/Input";
+import { useAlert } from "react-alert";
 
 const Form = ({ nextSlide }) => {
+  const alert = useAlert();
+
+  const submitHandler = () => {
+    alert.show("Profile Updated successfully", {
+      onClose: () => {
+        nextSlide();
+      },
+    });
+  };
+
   return (
     <div>
-      <form action='' onSubmit={nextSlide}>
+      <form action='' onSubmit={submitHandler}>
         <Input
           type='file'
           input

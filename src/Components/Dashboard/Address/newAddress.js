@@ -1,6 +1,7 @@
 import React from "react";
 import Btn from "../../Button/btn";
 import Input from "../../Form/Input";
+import { useAlert } from "react-alert";
 
 const NewAddress = ({
   nextSlide,
@@ -9,13 +10,21 @@ const NewAddress = ({
   setSavedAddress,
   inputItems,
 }) => {
+  const alert = useAlert();
   return (
     <div>
       <h2 className='2xl font-medium'>Add New Address</h2>
       <form
         action=''
-        onSubmit={() => {
-          prevSlide();
+        onSubmit={async (e) => {
+          e.preventDefault();
+          alert.show("Address added successfully", {
+            timeout: 4000,
+            onClose: () => {
+              prevSlide();
+            },
+          });
+
           setSavedAddress(true);
         }}
       >
