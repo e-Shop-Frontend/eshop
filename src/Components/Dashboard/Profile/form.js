@@ -6,7 +6,8 @@ import { useAlert } from "react-alert";
 const Form = ({ nextSlide }) => {
   const alert = useAlert();
 
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
     alert.show("Profile Updated successfully", {
       onClose: () => {
         nextSlide();
