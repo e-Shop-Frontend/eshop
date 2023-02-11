@@ -1,22 +1,20 @@
 import React from "react";
 import Btn from "../../Button/btn";
 import Input from "../../Form/Input";
-import { useAlert } from "react-alert";
+import { ToastContainer, toast } from "react-toastify";
 
 const Form = ({ nextSlide }) => {
-  const alert = useAlert();
-
   const submitHandler = (e) => {
     e.preventDefault();
-    alert.show("Profile Updated successfully", {
-      onClose: () => {
-        nextSlide();
-      },
-    });
+    toast.success("Profile updated successfully!");
+    setTimeout(() => {
+      nextSlide();
+    }, 3000);
   };
 
   return (
     <div>
+      <ToastContainer autoClose={3000} />
       <form action='' onSubmit={submitHandler}>
         <Input
           type='file'

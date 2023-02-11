@@ -6,9 +6,11 @@ import Last from "../../Components/Dashboard/Profile/last";
 const Profile = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [inputItems, setInputItems] = useState({});
+
   const nextSlide = () => {
     setActiveSlide(activeSlide + 1);
   };
+
   const prevSlide = () => {
     setActiveSlide(activeSlide - 1);
   };
