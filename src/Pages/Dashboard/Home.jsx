@@ -13,6 +13,7 @@ const Home = () => {
   const handleInputChange = (e) => {
     setInputItems({ ...inputItems, [e.target.name]: e.target.value });
   };
+
   return (
     <div className=''>
       {activeSlide === 0 ? (

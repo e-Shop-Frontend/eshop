@@ -2,6 +2,8 @@ import React from "react";
 import Btn from "../../Button/btn";
 import amico from "../../../Assets/images/amico.png";
 import track from "../../../Assets/images/track.png";
+import { useState } from "react";
+import TrackShipment from "./trackShipment";
 
 const Shipment = ({ nextSlide }) => {
   const details = [
@@ -11,6 +13,7 @@ const Shipment = ({ nextSlide }) => {
     { name: "Processed Shipments", value: 0 },
     { name: "Delivered Shipments", value: 0 },
   ];
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div>
       <Btn text='Create Shipment' className={"bg-pry"} onClick={nextSlide} />
@@ -55,12 +58,19 @@ const Shipment = ({ nextSlide }) => {
             <p className='text-sm'>
               Get real tracking update on your shipment on the go.
             </p>
-            <p className='text-sec my-3 text-right font-medium text-xs'>
+            <p
+              onClick={() => setIsSidebarOpen(true)}
+              className='cursor-pointer select-none text-sec my-3 text-right font-medium text-xs'
+            >
               Track now
             </p>
           </div>
         </div>
       </div>
+      <TrackShipment
+        setIsbarOpen={setIsSidebarOpen}
+        isSidebarOpen={isSidebarOpen}
+      />
     </div>
   );
 };
