@@ -20,7 +20,7 @@ const Dashboard = () => {
       />
       <Sidebar isSidebarOpen={isSidebarOpen} closeSidebar={closeSidebar} />
       <div className='bg-gray-50 md:w-[70%] lg:w-[80%] md:ml-auto p-8 min-h-screen pt-36'>
-        <div className='max-w-3xl'>
+        <div className=''>
           <Outlet />
         </div>
       </div>
