@@ -12,6 +12,7 @@ import Referral from "../Pages/Dashboard/Referral";
 import Wallet from "../Pages/Dashboard/Wallet";
 import Address from "../Pages/Dashboard/Address";
 import OrderInfo from "../Pages/Dashboard/OrderInfo";
+import Track from "../Pages/LandingPage/Track";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path='/' element={<LandingPage />}>
           <Route index element={<Home />} />
+          <Route path='track/:trackID/' element={<Track />} />
         </Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />

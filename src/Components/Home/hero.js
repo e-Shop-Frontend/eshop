@@ -1,9 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import hero from "../../Assets/images/hero.png";
 import Btn from "../Button/btn";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useState } from "react";
 const Hero = () => {
+  const [trackingID, setTrackingID] = useState(null);
+  const navigate = useNavigate();
+
+  const track = (e) => {
+    e.preventDefault();
+    navigate(`track/${trackingID}`);
+  };
+
   return (
     <section className='bg-grad'>
       <div className='max-width1'>
@@ -24,11 +33,7 @@ const Hero = () => {
             </div>
 
             <div>
-              <form
-                action=''
-                className='flex gap-4 my-10'
-                onSubmit={(e) => e.preventDefault()}
-              >
+              <form action='' className='flex gap-4 my-10' onSubmit={track}>
                 <div className='flex items-center gap-2 text-gray-800 w-full relative'>
                   <i className='text-xl left-4 absolute'>
                     <AiOutlineSearch />
@@ -38,6 +43,7 @@ const Hero = () => {
                     required
                     className='bg-white p-4 w-full block px-8 pl-12 rounded-md'
                     placeholder='Enter Tracking ID'
+                    onChange={(e) => setTrackingID(e.target.value)}
                   />
                 </div>
                 <Btn text='Track' className='bg-pry' />

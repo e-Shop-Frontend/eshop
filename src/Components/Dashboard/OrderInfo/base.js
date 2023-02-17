@@ -39,7 +39,7 @@ const OrderBase = ({ setActiveSlide }) => {
           <div className='min-w-[900px]'>
             <div className='grid gap-2 grid-cols-7'>
               {orderHeader.map((header, index) => (
-                <h2 className='whitespace-nowrap' key={index}>
+                <h2 className='whitespace-nowrap font-medium' key={index}>
                   {header}
                 </h2>
               ))}

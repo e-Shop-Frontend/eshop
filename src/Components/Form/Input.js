@@ -16,6 +16,7 @@ const Input = ({
   className,
   required,
   password,
+  readOnly,
 }) => {
   return (
     <div className={`${check ? "flex gap-2 items-center" : "block"} my-2`}>
@@ -32,6 +33,7 @@ const Input = ({
           name={id}
           required={required}
           placeholder={placeholder}
+          readOnly={readOnly}
         />
       )}
       {textarea && (
