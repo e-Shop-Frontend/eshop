@@ -7,15 +7,21 @@ import FundExisting from "../../Components/Dashboard/Wallet/FundExisting";
 import Success from "../../Components/Dashboard/Wallet/success";
 import CreditWallet from "../../Components/Dashboard/Wallet/CreditWallet";
 import FundNew from "../../Components/Dashboard/Wallet/FundNew";
+import { AiOutlineCreditCard } from "react-icons/ai";
+import { IoMdAdd } from "react-icons/io";
+import BtnGrid from "../../Components/Button/BtnGrid";
+import History from "../../Components/Dashboard/Wallet/history";
+import WalletDetails from "../../Components/Dashboard/Wallet/walletDetails";
 
 const Wallet = () => {
   const walletArr = [
     { title: "Fund New Card", img: card },
     { title: "Fund Existing Card", img: card },
-    { title: "Credit Wallet", img: card },
-    { title: "Transaction History", img: trans },
+    // { title: "Credit Wallet", img: card },
+    // { title: "Transaction History", img: trans },
   ];
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [isTopupModalVisible, setIsTopupModalVisible] = useState(false);
   return (
     <div>
       {selectedIndex !== "success" && selectedIndex !== 0 && (
@@ -24,9 +30,12 @@ const Wallet = () => {
           <p className='text-sm my-3'>
             All transaction are secured and encrypted
           </p>
-          <div className='bg-black text-white p-8 rounded-md my-2 sm:w-96 h-44'>
-            <h2 className='text-sm'>Total Balance</h2>
-            <Currency className={"my-3 font-bold text-xl"} amount={20000} />
+          <div className='flex flex-col lg:flex-row gap-8'>
+            <WalletDetails
+              setIsTopupModalVisible={setIsTopupModalVisible}
+              setSelectedIndex={setSelectedIndex}
+            />
+            <History />
           </div>
         </div>
       )}
@@ -61,9 +70,13 @@ const Wallet = () => {
       {selectedIndex === 1 && (
         <FundExisting setSelectedIndex={setSelectedIndex} />
       )}
-      {selectedIndex === 2 && (
-        <CreditWallet setSelectedIndex={setSelectedIndex} />
-      )}
+
+      <CreditWallet
+        setIsTopupModalVisible={setIsTopupModalVisible}
+        isTopupModalVisible={isTopupModalVisible}
+        setSelectedIndex={setSelectedIndex}
+      />
+
       {selectedIndex === "success" && (
         <Success setSelectedIndex={setSelectedIndex} />
       )}

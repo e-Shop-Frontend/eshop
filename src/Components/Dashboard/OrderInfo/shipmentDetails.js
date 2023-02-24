@@ -20,10 +20,9 @@ const ShipmentDetails = ({ setActiveSlide }) => {
   };
 
   useEffect(() => {
-    const closeModal = () => {
+    const closeModal = setTimeout(() => {
       setIsPaymentModal(false);
-    };
-    setTimeout(closeModal, 3000);
+    }, 3000);
 
     return () => clearTimeout(closeModal);
   }, [isPaymentModal]);
