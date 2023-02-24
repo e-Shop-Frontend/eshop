@@ -8,6 +8,15 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.overflowHide {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.overflowHide::-webkit-scrollbar {
+  display: none;
+}
+
 @layer components {
   .bg-grad {
     @apply bg-gradient-to-b from-[#008E56] to-[#FFF62C];
