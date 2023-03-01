@@ -6,7 +6,12 @@ const Currency = ({ amount, className }) => {
     currency: "NGN",
   });
 
-  return <h2 className={className}>{priceFormat.format(amount)}</h2>;
+  return (
+    <h2 className={className}>
+      {/* &#8358;  */}
+      {priceFormat.format(amount)}
+    </h2>
+  );
 };
 
 export default Currency;

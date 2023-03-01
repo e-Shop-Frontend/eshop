@@ -13,19 +13,6 @@ const FundNew = () => {
   const [isCompleteModalShown, setIsCompleteModalShown] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timeOut = setTimeout(() => {
-  //     setIsCompleteModalShown(false);
-  //     console.log("first");
-  //     // navigate("/dashboard/virtual-card");
-  //     setTimeout(() => {
-  //       console.log("first to come");
-  //     }, 1000);
-  //   }, 3000);
-
-  //   return () => clearTimeout(timeOut);
-  // }, [isCompleteModalShown]);
-
   const cardLimits = [
     "Minimum single deposit $5",
     "Maximum single deposit $50,000",
@@ -73,21 +60,18 @@ const FundNew = () => {
             <h2>NGN 750/$</h2>
           </div>
           <div className='flex justify-between font-medium my-4'>
-            <h2>Funding</h2>
-            <h2>$7</h2>
+            <h2>First time fund fee</h2>
+            <h2>$2</h2>
           </div>
           <div className='flex justify-between font-medium my-4'>
-            <h2>Initial Funding Fee</h2>
-            <h2>$7</h2>
-          </div>
-          <div className='flex justify-between font-medium my-4'>
-            <h2>Total</h2>
-            <h2>$10</h2>
+            <h2>Amount deposited on card</h2>
+            <h2>$12</h2>
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>Total wallet debit</h2>
-            <h2>NGN7500</h2>
+            <h2>&#8358; 1200</h2>
           </div>
+
           <Btn
             text='Continue'
             onClick={() => setIsCompleteModalShown(true)}
@@ -103,7 +87,9 @@ const FundNew = () => {
         <h2 className='text-base font-medium'>
           Enter Amount to be credited on Dollar card.
         </h2>
-        <p className='text-sm'>Minimum of $4 in naira equivalant</p>
+        <p className='text-sm'>
+          Minimum of $5 (&#8358;3000) in naira equivalant
+        </p>
         <form
           action=''
           onSubmit={(e) => {

@@ -10,7 +10,7 @@ const Nav = () => {
     { title: "About Us", url: "/about" },
     { title: "Contact", url: "/contact" },
     { title: "API Documentation", url: "/documentation" },
-    { title: "Dolar card", url: "dolar-card" },
+    { title: "Dollar card", url: "dolar-card" },
   ];
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

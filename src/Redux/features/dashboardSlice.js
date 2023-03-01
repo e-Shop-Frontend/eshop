@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   dashLocation: "Home",
+  dollarCardState: false,
 };
 
 const authSlice = createSlice({
@@ -11,7 +12,10 @@ const authSlice = createSlice({
     setLocation: (state, { payload }) => {
       state.dashLocation = payload;
     },
+    setDollarCardState: (state) => {
+      state.dollarCardState = true;
+    },
   },
 });
-export const { setLocation } = authSlice.actions;
+export const { setLocation, setDollarCardState } = authSlice.actions;
 export default authSlice.reducer;
