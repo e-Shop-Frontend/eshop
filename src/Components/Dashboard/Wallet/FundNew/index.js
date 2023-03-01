@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import card from "../../../../Assets/images/card4.png";
 import Btn from "../../../Button/btn";
+import Input from "../../../Form/Input";
+import DefaultModal from "../../../Modals/defaultModal";
+import SuccessModal from "../../../Modals/success";
 
 const FundNew = () => {
   const [activePage, setActivePage] = useState(0);
+  const [isModalShown, setIsModalShown] = useState(false);
+  const [isCompleteModalShown, setIsCompleteModalShown] = useState(false);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const timeOut = setTimeout(() => {
+  //     setIsCompleteModalShown(false);
+  //     console.log("first");
+  //     // navigate("/dashboard/virtual-card");
+  //     setTimeout(() => {
+  //       console.log("first to come");
+  //     }, 1000);
+  //   }, 3000);
+
+  //   return () => clearTimeout(timeOut);
+  // }, [isCompleteModalShown]);
+
   const cardLimits = [
-    "Minimum single deposit $10",
-    "Maximum single deposit $40000",
-    "Maximum single transaction $40000",
-    "Monthly transaction limit $40000",
-    "Maximum 3 cards per user.",
+    "Minimum single deposit $5",
+    "Maximum single deposit $50,000",
+    "Maximum single transaction $50,000",
+    "Monthly transaction limit $50,000",
   ];
 
   return (
@@ -20,9 +40,15 @@ const FundNew = () => {
       <img src={card} className='w-96' alt='card' />
       {activePage === 0 && (
         <div>
-          <div className='flex justify-between font-medium my-4'>
-            <h2>Dollar card creation fee</h2>
-            <h2>$0.00</h2>
+          <div className='my-10'>
+            <div className='flex justify-between font-medium my-4'>
+              <h2>Current Dollar Rate</h2>
+              <h2>$750.00</h2>
+            </div>
+            <div className='flex justify-between font-medium my-4'>
+              <h2>Dollar Creation Fee</h2>
+              <h2>$0.00</h2>
+            </div>
           </div>
           <h2 className='font-medium text-lg'>Card Limit</h2>
           {cardLimits.map((limit, i) => {
@@ -32,22 +58,11 @@ const FundNew = () => {
               </li>
             );
           })}
-          <h2 className='font-medium text-lg'>Rates and Conversion</h2>
-          <p className='my-3 text-sm'>
-            At the point of funding your eAfrica dollar caard, the current
-            dollar rate will be shown to you, and the equivelant in Niara will
-            be charged from your eAfrica Naira wallet balance.{" "}
-          </p>
-          <div className='my-5'>
-            <h2 className='font-medium text-lg'>Rates and Conversion</h2>
-            <p className='my-3 text-sm'>
-              Per transaction you will be charged a fee as transaction fee.{" "}
-            </p>
-          </div>
+
           <Btn
             text='Continue'
             className={"bg-pry font-medium my-5"}
-            onClick={() => setActivePage(1)}
+            onClick={() => setIsModalShown(true)}
           />
         </div>
       )}
@@ -73,9 +88,57 @@ const FundNew = () => {
             <h2>Total wallet debit</h2>
             <h2>NGN7500</h2>
           </div>
-          <Btn text='Continue' className={"bg-pry font-medium my-5"} />
+          <Btn
+            text='Continue'
+            onClick={() => setIsCompleteModalShown(true)}
+            className={"bg-pry font-medium my-5"}
+          />
         </div>
       )}
+
+      <DefaultModal
+        visibilityState={isModalShown}
+        closeModal={() => setIsModalShown(false)}
+      >
+        <h2 className='text-base font-medium'>
+          Enter Amount to be credited on Dollar card.
+        </h2>
+        <p className='text-sm'>Minimum of $4 in naira equivalant</p>
+        <form
+          action=''
+          onSubmit={(e) => {
+            e.preventDefault();
+            setActivePage(1);
+            setIsModalShown(false);
+          }}
+        >
+          <div className='flex items-center border-b-2 my-4 gap-2'>
+            <h2>&#8358;</h2>
+            <div className='w-full'>
+              <Input required={true} className='-my-2' type='number' input />
+            </div>
+          </div>
+          <Btn text='Continue' className='bg-pry w-full' />
+        </form>
+      </DefaultModal>
+      <SuccessModal
+        closeModal={() => setIsCompleteModalShown(false)}
+        visibilityState={isCompleteModalShown}
+      >
+        <h2 className='text-xl font-medium my-2 '>Transaction Successful</h2>
+        <p className='text-sm'>
+          Kindly note that it takes few minutes to enable your balance to appear
+          on your card
+        </p>
+        <Btn
+          text='Ok'
+          className='bg-pry w-full my-4'
+          onClick={() => {
+            setIsCompleteModalShown(false);
+            navigate("/dashboard/virtual-card");
+          }}
+        />
+      </SuccessModal>
     </div>
   );
 };

@@ -7,11 +7,19 @@ import Success from "../../Components/Dashboard/VirtualCard/success";
 const Virtual = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [inputItems, setInputItems] = useState({});
+  const [isVirtualCard, setIsVirtualCard] = useState(false);
   const nextSlide = () => {
     setActiveSlide(activeSlide + 1);
   };
+
   const prevSlide = () => {
     setActiveSlide(activeSlide - 1);
+  };
+
+  console.log(isVirtualCard);
+  const setVirtual = () => {
+    setIsVirtualCard(true);
+    console.log(isVirtualCard);
   };
 
   // const handleInputChange = (e) => {
@@ -19,13 +27,25 @@ const Virtual = () => {
   // };
   return (
     <div>
-      {activeSlide === 0 && <Generate nextSlide={nextSlide} />}
-      {activeSlide === 1 && <OTP prevSlide={prevSlide} nextSlide={nextSlide} />}
-      {activeSlide === 2 && (
-        <ConfirmPin prevSlide={prevSlide} nextSlide={nextSlide} />
+      {/* If Users Don't have a virtual card yet */}
+      {!isVirtualCard && (
+        <div>
+          {activeSlide === 0 && <Generate nextSlide={nextSlide} />}
+          {activeSlide === 1 && (
+            <OTP prevSlide={prevSlide} nextSlide={nextSlide} />
+          )}
+          {activeSlide === 2 && (
+            <ConfirmPin prevSlide={prevSlide} nextSlide={nextSlide} />
+          )}
+          {activeSlide === 3 && <Success setVirtual={setVirtual} />}
+        </div>
       )}
-      {activeSlide === 3 && (
-        <Success setActiveSlide={setActiveSlide} nextSlide={nextSlide} />
+
+      {/* If Users have a Virtual card already */}
+      {isVirtualCard && (
+        <div>
+          <h2>Hi</h2>
+        </div>
       )}
     </div>
   );

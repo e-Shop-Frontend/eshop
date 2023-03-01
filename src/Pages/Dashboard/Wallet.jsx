@@ -15,8 +15,8 @@ import WalletDetails from "../../Components/Dashboard/Wallet/walletDetails";
 
 const Wallet = () => {
   const walletArr = [
-    { title: "Fund New Card", img: card },
-    { title: "Fund Existing Card", img: card },
+    { title: "Fund Dollar Card", img: card },
+    // { title: "Fund Existing Card", img: card },
     // { title: "Credit Wallet", img: card },
     // { title: "Transaction History", img: trans },
   ];
