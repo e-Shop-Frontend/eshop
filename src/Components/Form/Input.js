@@ -25,7 +25,7 @@ const Input = ({
       </label>
       {input && (
         <input
-          className={`block p-4 rounded-md my-2 w-full text-sm ${className}`}
+          className={`block p-4 py-3 rounded-md my-2 w-full text-sm ${className}`}
           id={id}
           type={type}
           value={value}
@@ -50,7 +50,7 @@ const Input = ({
       )}
       {dropdown && (
         <select
-          className={`w-full rounded-md block p-4 my-2 text-sm ${className}`}
+          className={`w-full rounded-md block p-4 py-3 my-2 text-sm ${className}`}
           name={id}
           id=''
           onChange={setItem}

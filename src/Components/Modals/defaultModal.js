@@ -7,7 +7,7 @@ const DefaultModal = ({ visibilityState, closeModal, children }) => {
         visibilityState ? "scale-100" : "scale-0"
       }`}
     >
-      <div className='bg-white w-full max-w-sm rounded-md shadow-md p-4 sm:p-8'>
+      <div className='bg-white w-full max-w-md rounded-md shadow-md p-4 sm:p-8'>
         <div className='flex justify-between items-center'>
           <div />
           <i className='text-xl' onClick={closeModal}>

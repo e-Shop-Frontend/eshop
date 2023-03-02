@@ -4,6 +4,7 @@ import logo from "../../../Assets/images/logo.png";
 import { IoNotificationsOutline } from "react-icons/io5";
 import profile from "../../../Assets/images/profile.jpg";
 import { Greet } from "../../../Utils/getDate";
+import { RiMenuUnfoldFill } from "react-icons/ri";
 const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { dashLocation } = useSelector((state) => state.dashboard);
   return (
@@ -36,12 +37,15 @@ const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
           />
         </div>
       </div>
-      <h2
-        className='text-xs text-sec italic underline md:hidden px-6 py-3 -mt-7'
+      <div
+        className='text-sm text-sec md:hidden px-6 py-3 -mt-7 flex items-center gap-2'
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        {isSidebarOpen ? "Close Menu" : "Open Menu"}
-      </h2>
+        <i className='text-xl'>
+          <RiMenuUnfoldFill />
+        </i>
+        <h2>{isSidebarOpen ? "Close Menu" : "Open Menu"}</h2>
+      </div>
     </header>
   );
 };
