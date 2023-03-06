@@ -36,6 +36,10 @@ const Calculator = () => {
         <h2 className='text-lg font-medium'>
           Calculate your shipping cost here
         </h2>
+        <div className='flex gap-8 items-center'>
+          <h2>Shipping cost:</h2>
+          <h2>$5</h2>
+        </div>
         <form action='' className='my-8'>
           <Input
             className='shadow-sm'

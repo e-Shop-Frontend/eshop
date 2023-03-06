@@ -8,27 +8,26 @@ import Currency from "../../../Utils/currency";
 import SuccessModal from "../../Modals/success";
 import { useEffect } from "react";
 import ErrorModal from "../../Modals/errorModal";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 const ShipmentDetails = ({ setActiveSlide }) => {
   const [isModalShown, setIsModalShown] = useState(false);
   const [isPayModalShown, setIsPayModalShown] = useState(false);
   const [isPaymentModal, setIsPaymentModal] = useState(false);
   const [isErrorModal, setIsErrorModal] = useState(false);
+  const navigate = useNavigate();
 
   const makePayment = () => {
     setIsPayModalShown(false);
-    setIsPaymentModal(true);
-  };
-
-  useEffect(() => {
-    const closeModal = setTimeout(() => {
-      setIsPaymentModal(false);
+    toast.success("Payment made Successfully!");
+    setTimeout(() => {
+      navigate("/dashboard");
     }, 3000);
-
-    return () => clearTimeout(closeModal);
-  }, [isPaymentModal]);
+  };
 
   return (
     <div>
+      <ToastContainer autoClose={3000} />
       <h2 className='font-medium text-lg'>Shipment Details</h2>
 
       <div className='rounded-md border shadow-md my-10 gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-5 py-10 text-sm'>

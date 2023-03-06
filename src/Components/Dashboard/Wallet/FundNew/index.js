@@ -61,7 +61,7 @@ const FundNew = () => {
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>First time fund fee</h2>
-            <h2>$2</h2>
+            <h2>$1</h2>
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>Amount deposited on card</h2>

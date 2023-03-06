@@ -8,6 +8,8 @@ const OrderBase = ({ setActiveSlide }) => {
     "Unique Code",
     "Tracking ID",
     "Kg/Dimension",
+    "Amount",
+    "Payment Staus",
     "Status",
   ];
   const orderContent = [
@@ -16,6 +18,8 @@ const OrderBase = ({ setActiveSlide }) => {
       uniqueCode: "3342",
       trackingID: "xxxxxxx",
       dimension: "12 LBS",
+      amount: "₦1000",
+      paymentStatus: "Pending",
       status: "Pending",
     },
     {
@@ -23,6 +27,8 @@ const OrderBase = ({ setActiveSlide }) => {
       uniqueCode: "3342",
       trackingID: "xxxxxxx",
       dimension: "32 LBS",
+      amount: "₦35000",
+      paymentStatus: "Pending",
       status: "Pending",
     },
   ];
@@ -36,8 +42,8 @@ const OrderBase = ({ setActiveSlide }) => {
       <div className='my-8'>
         <h3 className='text-base font-medium'>Recent Orders</h3>
         <div className='overflow-scroll bg-gray-100 shadow-md rounded-md p-5'>
-          <div className='min-w-[900px]'>
-            <div className='grid gap-2 grid-cols-7'>
+          <div className='min-w-[110px]'>
+            <div className='grid gap-2 grid-cols-9'>
               {orderHeader.map((header, index) => (
                 <h2 className='whitespace-nowrap font-medium' key={index}>
                   {header}
@@ -46,7 +52,7 @@ const OrderBase = ({ setActiveSlide }) => {
             </div>
             <hr className='my-4' />
           </div>
-          <div className='min-w-[900px]'>
+          <div className='min-w-[1100px]'>
             {orderContent.map((item, index) => (
               <SingleShipment
                 setActiveSlide={setActiveSlide}
