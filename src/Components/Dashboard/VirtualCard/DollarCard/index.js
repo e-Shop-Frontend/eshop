@@ -99,7 +99,7 @@ const DollarCard = () => {
       >
         <h2 className='my-2'>
           To unblock your card kindly reach out to our customers service via
-          email info@eshopafrica.com
+          email info@eshopafrica.co
         </h2>
       </ErrorModal>
       {/* <SuccessModal visibilityState={isHistorySuccessModalOpen}>
