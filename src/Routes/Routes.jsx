@@ -13,6 +13,8 @@ import Wallet from "../Pages/Dashboard/Wallet";
 import Address from "../Pages/Dashboard/Address";
 import OrderInfo from "../Pages/Dashboard/OrderInfo";
 import Track from "../Pages/LandingPage/Track";
+import Calculator from "../Pages/Dashboard/Calculator";
+import Notification from "../Pages/Dashboard/Notification";
 
 const AppRoutes = () => {
   return (
@@ -32,6 +34,8 @@ const AppRoutes = () => {
           <Route path='wallet' element={<Wallet />} />
           <Route path='address' element={<Address />} />
           <Route path='order-info' element={<OrderInfo />} />
+          <Route path='delivery-calculator' element={<Calculator />} />
+          <Route path='notifications' element={<Notification />} />
         </Route>
         <Route path='*' element={<h2>404</h2>} />
       </Routes>

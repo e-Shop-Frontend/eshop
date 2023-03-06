@@ -5,6 +5,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import profile from "../../../Assets/images/profile.jpg";
 import { Greet } from "../../../Utils/getDate";
 import { RiMenuUnfoldFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { dashLocation } = useSelector((state) => state.dashboard);
   return (
@@ -23,12 +24,12 @@ const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
             <div className='hidden sm:block'>
               <Greet user={"John"} />
             </div>
-            <i className='flex items-center'>
+            <Link to='notifications' className='flex items-center'>
               <IoNotificationsOutline className='text-xl' />
               <h2 className='text-xs bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center -translate-y-2 -translate-x-3'>
                 4
               </h2>
-            </i>
+            </Link>
           </div>
           <img
             className='w-14 h-14 object-cover rounded-full'

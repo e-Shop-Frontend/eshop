@@ -11,7 +11,7 @@ export const menus = [
   { menu: "Orders & Payment", url: "order-info", img: order },
   { menu: "Dollar Card", url: "virtual-card", img: card },
   { menu: "Wallet", url: "wallet", img: wallet },
-  { menu: "Delivery Calculator", url: "/dashboard", img: delivery },
+  { menu: "Delivery Calculator", url: "delivery-calculator", img: delivery },
   { menu: "Profile", url: "profile", img: profile },
   { menu: "My Address", url: "address", img: address },
   { menu: "Referral", url: "referral", img: referral },
