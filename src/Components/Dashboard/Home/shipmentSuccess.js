@@ -10,6 +10,7 @@ const ShipmentSuccess = ({ setActiveSlide }) => {
       </h2>
       <p className='text-center'>
         Shipment will be process as soon as we receive it in our warehouse.
+        kindly check orders to re confirm shipment details.
       </p>
       <Btn
         className={"bg-pry my-5"}

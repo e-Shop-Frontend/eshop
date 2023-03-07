@@ -1,9 +1,11 @@
 import React from "react";
-
-// import doc from "../../../Assets/images/doc.png";
 import Btn from "../../Button/btn";
 import profile from "../../../Assets/images/profile.jpg";
+import { useSelector } from "react-redux";
+
 const Base = ({ nextSlide }) => {
+  const { user } = useSelector((state) => state.auth);
+  const { firstname, lastname, phone_number, email, dob, profile_photo } = user;
   return (
     <div>
       <div className='my-5'>
@@ -12,31 +14,31 @@ const Base = ({ nextSlide }) => {
         <div>
           <h2>First Name</h2>
           <h2 className='font-medium my-2 border p-3 rounded-md shadow-sm mb-5'>
-            John
+            {firstname}
           </h2>
         </div>
         <div>
           <h2>Last Name</h2>
           <h2 className='font-medium my-2 border p-3 rounded-md shadow-sm mb-5'>
-            Doe
+            {lastname}
           </h2>
         </div>
         <div>
           <h2>Phone Number</h2>
           <h2 className='font-medium my-2 border p-3 rounded-md shadow-sm mb-5'>
-            080123456789
+            {phone_number}
           </h2>
         </div>
         <div>
           <h2>Email</h2>
           <h2 className='font-medium my-2 border p-3 rounded-md shadow-sm mb-5'>
-            Johndoe@gmail.com
+            {email}
           </h2>
         </div>
         <div>
           <h2>Date of Birth</h2>
           <h2 className='font-medium my-2 border p-3 rounded-md shadow-sm mb-5'>
-            12/12/2000
+            {dob}
           </h2>
         </div>
 
