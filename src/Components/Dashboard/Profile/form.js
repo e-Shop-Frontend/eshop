@@ -4,7 +4,8 @@ import Input from "../../Form/Input";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { baseUrl, setUserProfile } from "../../../Redux/features/authSlice";
+import { setUserProfile } from "../../../Redux/features/authSlice";
+import { baseUrl } from "../../../Utils/constants";
 import { useNavigate } from "react-router-dom";
 
 const Form = ({ prevSlide }) => {
@@ -40,16 +41,17 @@ const Form = ({ prevSlide }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
     const URL = `${baseUrl}update-user-profile`;
     let msg;
     const data = { ...formData, profile_photo };
     console.log(data);
     try {
-      const res = await axios.post(URL, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.post(URL, data, config);
       console.log(res);
       setIsLoading(false);
       msg = res.data.message;
@@ -119,6 +121,7 @@ const Form = ({ prevSlide }) => {
           required={true}
           value={formData.email || ""}
           setItem={handleFormInput}
+          readOnly={true}
         />
         <Input
           type='date'

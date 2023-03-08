@@ -4,11 +4,15 @@ import { IoMdAdd } from "react-icons/io";
 import Currency from "../../../Utils/currency";
 import BtnGrid from "../../Button/BtnGrid";
 
-const WalletDetails = ({ setIsTopupModalVisible }) => {
+const WalletDetails = ({ setIsTopupModalVisible, walletDetails }) => {
+  console.log(walletDetails);
   return (
     <div className='bg-black text-white p-8 rounded-md my-2 sm:w-96'>
       <h2 className='text-sm'>Total Balance</h2>
-      <Currency className={"my-3 font-bold text-xl"} amount={20000} />
+      <Currency
+        className={"my-3 font-bold text-xl"}
+        amount={walletDetails?.wallet_balance || 0}
+      />
       <div className='flex justify-end gap-4 mt-16'>
         <BtnGrid
           className={"bg-blue-600"}

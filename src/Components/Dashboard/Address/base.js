@@ -21,7 +21,7 @@ const Base = ({ nextSlide, savedAddress, inputItems }) => {
       {savedAddress && (
         <div className='rounded-md p-8 shadow-md'>
           <div className='flex gap-3 justify-between my-2'>
-            <h2 className='font-medium'>{inputItems?.name}</h2>
+            <h2 className='font-medium'>{inputItems?.recipient_name}</h2>
             <div
               className='flex text-blue-600 font-medium items-center gap-1 cursor-pointer select-none'
               onClick={nextSlide}
@@ -34,7 +34,8 @@ const Base = ({ nextSlide, savedAddress, inputItems }) => {
           </div>
           <div className='flex gap-3 justify-between my-2'>
             <h2 className='text-sm'>
-              {inputItems.information}, {inputItems.state}. {inputItems.tel}
+              {inputItems.information}, {inputItems.state}.{" "}
+              {inputItems.recipient_number}
             </h2>
             <div className='flex text-red-600 font-medium items-center gap-1 cursor-pointer select-none'>
               <i className='text-lg'>

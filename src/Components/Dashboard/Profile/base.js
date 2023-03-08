@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 const Base = ({ nextSlide }) => {
   const { user } = useSelector((state) => state.auth);
   const { firstname, lastname, phone_number, email, dob, profile_photo } = user;
+  console.log(profile_photo);
   return (
     <div>
       <div className='my-5'>

@@ -8,18 +8,10 @@ const NewAddress = ({
   nextSlide,
   prevSlide,
   handleInputChange,
-  setSavedAddress,
+  handleSubmit,
   inputItems,
+  isLoading,
 }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast.success("New Address Added Successfully!");
-    setTimeout(() => {
-      prevSlide();
-      setSavedAddress(true);
-    }, 3000);
-  };
-
   return (
     <div>
       <h2 className='2xl font-medium'>Add New Address</h2>
@@ -29,26 +21,36 @@ const NewAddress = ({
           type='name'
           input
           title={"Recipient Name"}
-          id='name'
+          id='recipient_name'
           className={"border-2"}
           required={true}
           setItem={handleInputChange}
-          value={inputItems.name || ""}
+          value={inputItems.recipient_name || ""}
         />
         <Input
           type='tel'
           input
           title={"Recipient Phone Number"}
-          id='tel'
+          id='recipient_number'
           className={"border-2"}
           required={true}
           setItem={handleInputChange}
-          value={inputItems.tel || ""}
+          value={inputItems.recipient_number || ""}
+        />
+        <Input
+          type='number'
+          input
+          title={"House Number"}
+          id='house_number'
+          className={"border-2"}
+          required={true}
+          setItem={handleInputChange}
+          value={inputItems.house_number || ""}
         />
         <Input
           type='text'
           input
-          title={"House number and street name"}
+          title={"Street Name"}
           id='street_name'
           className={"border-2"}
           required={true}
@@ -80,7 +82,7 @@ const NewAddress = ({
         <Input
           type='text'
           dropdown
-          data={["Select a city", "Nigeria", "USA"]}
+          data={["Select a city", "Ikeja", "Oshodi"]}
           title={"City"}
           id='city'
           className={"border-2"}
@@ -99,7 +101,11 @@ const NewAddress = ({
           value={inputItems.information || ""}
         />
         <div className='flex gap-4'>
-          <Btn text={"Save Address"} className='bg-pry' />
+          <Btn
+            loadingState={isLoading}
+            text={"Save Address"}
+            className='bg-pry'
+          />
           <Btn onClick={prevSlide} text={"Cancel"} className='bg-gray-200' />
         </div>
       </form>

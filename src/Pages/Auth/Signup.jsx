@@ -7,11 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Btn from "../../Components/Button/btn";
 import Sidebar from "../../Components/Auth/sidebar";
 import axios from "axios";
-import {
-  baseUrl,
-  setToken,
-  setUserProfile,
-} from "../../Redux/features/authSlice";
+import { setToken, setUserProfile } from "../../Redux/features/authSlice";
+import { baseUrl } from "../../Utils/constants";
 import { toast, ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 
@@ -42,10 +39,10 @@ const Signup = () => {
       toast.success(msg);
       setTimeout(() => {
         navigate("/dashboard");
-      }, 3000);
+      }, 2000);
     } catch (error) {
       msg = error.response.data.message;
-      console.log(error);
+      // console.log(error);
       setIsLoading(false);
       toast.error(msg);
     }

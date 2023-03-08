@@ -6,11 +6,18 @@ import Btn from "../../../Button/btn";
 import Input from "../../../Form/Input";
 import DefaultModal from "../../../Modals/defaultModal";
 import SuccessModal from "../../../Modals/success";
+import { dollarRate } from "../../../../Utils/constants";
+import ErrorModal from "../../../Modals/errorModal";
+import WalletDetails from "../walletDetails";
 
-const FundNew = () => {
+const FundNew = ({ setSelectedIndex }) => {
   const [activePage, setActivePage] = useState(0);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isCompleteModalShown, setIsCompleteModalShown] = useState(false);
+  const [isErrorModalShown, setIsErrorModalShown] = useState(false);
+  const [amount, setAmount] = useState(0);
+  const [dollarEqual, setDollarEqual] = useState(0);
+  const [totalDebit, setTotalDebit] = useState(0);
   const navigate = useNavigate();
 
   const cardLimits = [
@@ -19,6 +26,26 @@ const FundNew = () => {
     "Maximum single transaction $50,000",
     "Monthly transaction limit $50,000",
   ];
+
+  const handleAmountSubmit = (e) => {
+    e.preventDefault();
+    setActivePage(1);
+    setIsModalShown(false);
+    console.log(amount);
+    setTotalDebit(+amount + +dollarRate);
+  };
+
+  useEffect(() => {
+    setDollarEqual(amount / dollarRate);
+  }, [amount]);
+
+  const handlePayment = () => {
+    if (WalletDetails?.wallet_balance > totalDebit) {
+      setIsCompleteModalShown(true);
+    } else {
+      setIsErrorModalShown(true);
+    }
+  };
 
   return (
     <div className=''>
@@ -30,7 +57,7 @@ const FundNew = () => {
           <div className='my-10'>
             <div className='flex justify-between font-medium my-4'>
               <h2>Current Dollar Rate</h2>
-              <h2>$750.00</h2>
+              <h2>₦{dollarRate}</h2>
             </div>
             <div className='flex justify-between font-medium my-4'>
               <h2>Dollar Creation Fee</h2>
@@ -65,16 +92,16 @@ const FundNew = () => {
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>Amount deposited on card</h2>
-            <h2>$12</h2>
+            <h2>${dollarEqual}</h2>
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>Total wallet debit</h2>
-            <h2>&#8358; 1200</h2>
+            <h2>&#8358; {totalDebit}</h2>
           </div>
 
           <Btn
             text='Continue'
-            onClick={() => setIsCompleteModalShown(true)}
+            onClick={handlePayment}
             className={"bg-pry font-medium my-5"}
           />
         </div>
@@ -88,25 +115,31 @@ const FundNew = () => {
           Enter Amount to be credited on Dollar card.
         </h2>
         <p className='text-sm'>
-          Minimum of $5 (&#8358;3000) in naira equivalant
+          Minimum of $5 (&#8358;{dollarRate * 5}) in naira equivalant
         </p>
-        <form
-          action=''
-          onSubmit={(e) => {
-            e.preventDefault();
-            setActivePage(1);
-            setIsModalShown(false);
-          }}
-        >
-          <div className='flex items-center border-b-2 my-4 gap-2'>
-            <h2>&#8358;</h2>
-            <div className='w-full'>
-              <Input required={true} className='-my-2' type='number' input />
+        <form action='' onSubmit={handleAmountSubmit}>
+          <div className='my-4'>
+            <div className='flex items-center border-b-2 gap-2'>
+              <h2>&#8358;</h2>
+              <div className='w-full'>
+                <Input
+                  setItem={(e) => setAmount(e.target.value)}
+                  required={true}
+                  className='-my-2'
+                  type='number'
+                  input
+                />
+              </div>
             </div>
+            <h2 className='text-xs my-2'>
+              Equivalent in Dollar:{" "}
+              <span className='font-medium'>${dollarEqual}</span>{" "}
+            </h2>
           </div>
           <Btn text='Continue' className='bg-pry w-full' />
         </form>
       </DefaultModal>
+
       <SuccessModal
         closeModal={() => setIsCompleteModalShown(false)}
         visibilityState={isCompleteModalShown}
@@ -125,6 +158,20 @@ const FundNew = () => {
           }}
         />
       </SuccessModal>
+      <ErrorModal
+        visibilityState={isErrorModalShown}
+        closeModal={() => setIsErrorModalShown(false)}
+      >
+        <h2 className='my-3'>
+          Insufficient Wallet Balance. Please top up your wallet balance to
+          continue
+        </h2>
+        <Btn
+          onClick={() => setSelectedIndex(null)}
+          text='Continue'
+          className='bg-red-600 text-white'
+        />
+      </ErrorModal>
     </div>
   );
 };

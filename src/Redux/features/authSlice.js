@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const baseUrl = `https://api.eshopafrica.co/api/v1/`;
 const initialState = {
   user: null,
   token: null,

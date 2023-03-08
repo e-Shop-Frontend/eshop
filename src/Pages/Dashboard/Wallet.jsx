@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Currency from "../../Utils/currency";
 import card from "../../Assets/images/card3.png";
 import trans from "../../Assets/images/trans.png";
@@ -12,8 +12,12 @@ import { IoMdAdd } from "react-icons/io";
 import BtnGrid from "../../Components/Button/BtnGrid";
 import History from "../../Components/Dashboard/Wallet/history";
 import WalletDetails from "../../Components/Dashboard/Wallet/walletDetails";
+import axios from "axios";
+import { baseUrl } from "../../Utils/constants";
+import { useSelector } from "react-redux";
 
 const Wallet = () => {
+  const { token } = useSelector((state) => state.auth);
   const walletArr = [
     { title: "Fund Dollar Card", img: card },
     // { title: "Fund Existing Card", img: card },
@@ -22,6 +26,33 @@ const Wallet = () => {
   ];
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isTopupModalVisible, setIsTopupModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [walletDetails, setWalletDetails] = useState(null);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const getWallet = async () => {
+    setIsLoading(true);
+    const url = `${baseUrl}wallet`;
+    try {
+      const res = await axios.get(url, config);
+      const data = res.data.data;
+      setIsLoading(false);
+      setWalletDetails(data);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getWallet();
+  }, []);
+
   return (
     <div>
       {selectedIndex !== "success" && selectedIndex !== 0 && (
@@ -34,6 +65,7 @@ const Wallet = () => {
             <WalletDetails
               setIsTopupModalVisible={setIsTopupModalVisible}
               setSelectedIndex={setSelectedIndex}
+              walletDetails={walletDetails}
             />
             <History />
           </div>
@@ -66,7 +98,12 @@ const Wallet = () => {
           })}
         </div>
       )}
-      {selectedIndex === 0 && <FundNew />}
+      {selectedIndex === 0 && (
+        <FundNew
+          setSelectedIndex={setSelectedIndex}
+          walletDetails={walletDetails}
+        />
+      )}
       {selectedIndex === 1 && (
         <FundExisting setSelectedIndex={setSelectedIndex} />
       )}
