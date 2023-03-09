@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import logo from "../../../Assets/images/logo.png";
 import { IoNotificationsOutline } from "react-icons/io5";
@@ -6,10 +6,16 @@ import profile from "../../../Assets/images/profile.jpg";
 import { Greet } from "../../../Utils/getDate";
 import { RiMenuUnfoldFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { imageUrl } from "../../../Utils/constants";
 const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { dashLocation } = useSelector((state) => state.dashboard);
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
+  const [profileImage, setProfileImage] = useState(profile);
+  useEffect(() => {
+    if (user && user?.profile_photo !== '{"profile_photo":[]}') {
+      setProfileImage(`${imageUrl}${user?.profile_photo}`);
+    }
+  }, [user]);
   return (
     <header className='bg-white shadow-md fixed top-0 right-0 w-full z-20'>
       <div className='max-width1 flex justify-between gap-4 font-medium text-sm'>
@@ -34,8 +40,8 @@ const Header = ({ setIsSidebarOpen, isSidebarOpen }) => {
             </Link>
           </div>
           <img
-            className='w-14 h-14 object-cover rounded-full'
-            src={profile}
+            className='w-10 h-10 object-cover rounded-full'
+            src={profileImage}
             alt='profile'
           />
         </div>

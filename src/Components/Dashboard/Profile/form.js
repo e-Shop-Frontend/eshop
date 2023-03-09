@@ -13,21 +13,22 @@ const Form = ({ prevSlide }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {
-    firstname,
-    lastname,
-    phone_number,
-    email,
-    dob,
-    profile_photo: userImg,
-  } = user;
   const [formData, setFormData] = useState({});
   const [profile_photo, setProfilePhoto] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
-      setFormData({ firstname, lastname, phone_number, email, dob });
+      const { firstname, lastname, phone_number, email, dob, profile_photo } =
+        user;
+      setFormData({
+        firstname,
+        lastname,
+        phone_number,
+        email,
+        dob,
+        profile_photo,
+      });
     }
   }, []);
   const handleFormInput = (e) => {
@@ -39,6 +40,7 @@ const Form = ({ prevSlide }) => {
   };
 
   const submitHandler = async (e) => {
+    let formInput = new FormData();
     e.preventDefault();
     setIsLoading(true);
     const config = {
@@ -48,10 +50,13 @@ const Form = ({ prevSlide }) => {
     };
     const URL = `${baseUrl}update-user-profile`;
     let msg;
-    const data = { ...formData, profile_photo };
+    const data = { ...formData, ...profile_photo };
     console.log(data);
+    for (const key in data) {
+      formInput.append(key, data[key]);
+    }
     try {
-      const res = await axios.post(URL, data, config);
+      const res = await axios.post(URL, formInput, config);
       console.log(res);
       setIsLoading(false);
       msg = res.data.message;
@@ -75,10 +80,10 @@ const Form = ({ prevSlide }) => {
       <form action='' onSubmit={submitHandler}>
         <Input
           type='file'
-          input
+          image
           id='profile_photo'
           className={"border-2"}
-          required={true}
+          // required={true}
           setItem={setUserImage}
         />
         <Input

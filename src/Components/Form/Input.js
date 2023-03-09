@@ -17,6 +17,7 @@ const Input = ({
   required,
   password,
   readOnly,
+  image,
 }) => {
   return (
     <div className={`${check ? "flex gap-2 items-center" : "block"} my-2`}>
@@ -34,6 +35,19 @@ const Input = ({
           required={required}
           placeholder={placeholder}
           readOnly={readOnly}
+        />
+      )}
+      {image && (
+        <input
+          className={`block p-4 py-3 rounded-md my-2 w-full text-sm ${className}`}
+          id={id}
+          type='file'
+          value={value}
+          onChange={setItem}
+          name={id}
+          required={required}
+          readOnly={readOnly}
+          accept='image/*'
         />
       )}
       {textarea && (
