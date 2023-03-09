@@ -8,8 +8,6 @@ import Success from "../../Components/Dashboard/VirtualCard/success";
 
 const Virtual = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  // const [inputItems, setInputItems] = useState({});
-
   const { dollarCardState } = useSelector((state) => state.dashboard);
 
   const nextSlide = () => {
@@ -19,10 +17,6 @@ const Virtual = () => {
   const prevSlide = () => {
     setActiveSlide(activeSlide - 1);
   };
-
-  // const handleInputChange = (e) => {
-  //   setInputItems({ ...inputItems, [e.target.name]: e.target.value });
-  // };
   return (
     <div>
       {/* If Users Don't have a virtual card yet */}

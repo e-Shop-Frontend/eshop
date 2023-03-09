@@ -6,7 +6,7 @@ const Shop = () => {
   return (
     <div className='bg-green-200 py-10'>
       <div className='max-width1 flex flex-col md:flex-row-reverse items-center'>
-        <div className='md:w-[50%] md:p-12'>
+        <div className='md:w-[50%]'>
           <img src={image} alt='shop' />
         </div>
         <div className='md:w-[50%]'>

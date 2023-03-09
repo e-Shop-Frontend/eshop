@@ -10,6 +10,7 @@ import Input from "../../../Form/Input";
 import Btn from "../../../Button/btn";
 import SuccessModal from "../../../Modals/success";
 import { toast, ToastContainer } from "react-toastify";
+import OTPInput from "../../../../Utils/OTP";
 
 const DollarCard = () => {
   const [activeIndex, setActiveIndex] = useState("");
@@ -42,73 +43,96 @@ const DollarCard = () => {
     toast.success("Transaction history sent to your mail successfully");
   };
 
+  const [isCardShown, setIsCardShown] = useState(false);
+  const [OTP, setOTP] = useState("");
+  console.log(OTP);
   return (
-    <div>
-      <ToastContainer autoClose={3000} />
-      <h2 className='text-xl font-medium'>Virtual Dollar Card</h2>
-      <p className='text-sm my-3'>All transaction are secured and encrypted</p>
-      <Card />
-      <div className='my-10'>
-        {lists.map(({ title, img }, index) => {
-          return (
-            <div
-              key={index}
-              className='flex items-center gap-3 my-3 cursor-pointer hover:scale-95 hover:text-sec font-medium transition'
-              onClick={() => {
-                setActiveIndex(index);
-                // modalHandler();
-              }}
-            >
-              <div className='bg-green-200 rounded-full p-3'>
-                <img className='w-5' src={img} alt={title} />
-              </div>
-              <h2 className='text-base select-none'>{title}</h2>
-            </div>
-          );
-        })}
-      </div>
-      <DefaultModal
-        visibilityState={isHistoryModalOpen}
-        closeModal={() => setIsHistoryModal(false)}
-      >
-        <h2 className='text-sec'>Request transaction History</h2>
-        <form action='' onSubmit={handleHistorySubmit}>
-          <Input
-            input
-            title='Enter Email Address'
-            required={true}
-            type='email'
-            id='email'
-            className='border-2 my-3'
+    <>
+      {isCardShown ? (
+        <div>
+          <ToastContainer autoClose={3000} />
+          <h2 className='text-xl font-medium'>Virtual Dollar Card</h2>
+          <p className='text-sm my-3'>
+            All transaction are secured and encrypted
+          </p>
+          <Card />
+          <div className='my-10'>
+            {lists.map(({ title, img }, index) => {
+              return (
+                <div
+                  key={index}
+                  className='flex items-center gap-3 my-3 cursor-pointer hover:scale-95 hover:text-sec font-medium transition'
+                  onClick={() => {
+                    setActiveIndex(index);
+                    // modalHandler();
+                  }}
+                >
+                  <div className='bg-green-200 rounded-full p-3'>
+                    <img className='w-5' src={img} alt={title} />
+                  </div>
+                  <h2 className='text-base select-none'>{title}</h2>
+                </div>
+              );
+            })}
+          </div>
+          <DefaultModal
+            visibilityState={isHistoryModalOpen}
+            closeModal={() => setIsHistoryModal(false)}
+          >
+            <h2 className='text-sec'>Request transaction History</h2>
+            <form action='' onSubmit={handleHistorySubmit}>
+              <Input
+                input
+                title='Enter Email Address'
+                required={true}
+                type='email'
+                id='email'
+                className='border-2 my-3'
+              />
+              <Btn text='Continue' className='w-full bg-pry' />
+            </form>
+          </DefaultModal>
+          <CancelModal
+            closeModal={() => setIsBlockModalOpen(false)}
+            visibilityState={isBlockModalOpen}
+            modalText='Block Card'
+            modalAction={() => {
+              toast.success("Card blocked successfully.");
+              setIsBlockModalOpen(false);
+            }}
           />
-          <Btn text='Continue' className='w-full bg-pry' />
-        </form>
-      </DefaultModal>
-      <CancelModal
-        closeModal={() => setIsBlockModalOpen(false)}
-        visibilityState={isBlockModalOpen}
-        modalText='Block Card'
-        modalAction={() => {
-          toast.success("Card blocked successfully.");
-          setIsBlockModalOpen(false);
-        }}
-      />
-      <ErrorModal
-        visibilityState={isUnblockModalOpen}
-        closeModal={() => setIsUnblockModalOpen(false)}
-      >
-        <h2 className='my-2'>
-          To unblock your card kindly reach out to our customers service via
-          email info@eshopafrica.co
-        </h2>
-      </ErrorModal>
-      {/* <SuccessModal visibilityState={isHistorySuccessModalOpen}>
-        <h2>Transaction history sent to your mail successfully</h2>
-      </SuccessModal>
-      <SuccessModal visibilityState={isHistorySuccessModalOpen}>
-        <h2>Transaction history sent to your mail successfully</h2>
-      </SuccessModal> */}
-    </div>
+          <ErrorModal
+            visibilityState={isUnblockModalOpen}
+            closeModal={() => setIsUnblockModalOpen(false)}
+          >
+            <h2 className='my-2'>
+              To unblock your card kindly reach out to our customers service via
+              email info@eshopafrica.co
+            </h2>
+          </ErrorModal>
+        </div>
+      ) : (
+        <div>
+          <h2 className='font-medium text-2xl'>
+            Enter your unique 4-digit pin!
+          </h2>
+          {/* <p className='my-2'>
+            Please remenber this pin. It will be used to keep your account
+            secure
+          </p> */}
+          <form className='' onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <OTPInput OTP={OTP} setOTP={setOTP} />
+            </div>
+            <Btn
+              onClick={() => setIsCardShown(true)}
+              text={"Proceed"}
+              className='bg-pry my-6'
+            />
+          </form>
+        </div>
+      )}
+    </>
   );
 };
 
