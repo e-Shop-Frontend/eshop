@@ -92,7 +92,7 @@ const FundNew = ({ setSelectedIndex }) => {
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>Amount deposited on card</h2>
-            <h2>${dollarEqual}</h2>
+            <h2>${dollarEqual.toFixed(2)}</h2>
           </div>
           <div className='flex justify-between font-medium my-4'>
             <h2>Total wallet debit</h2>
@@ -133,7 +133,7 @@ const FundNew = ({ setSelectedIndex }) => {
             </div>
             <h2 className='text-xs my-2'>
               Equivalent in Dollar:{" "}
-              <span className='font-medium'>${dollarEqual}</span>{" "}
+              <span className='font-medium'>${dollarEqual.toFixed(2)}</span>{" "}
             </h2>
           </div>
           <Btn text='Continue' className='bg-pry w-full' />
