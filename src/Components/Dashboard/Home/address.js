@@ -2,7 +2,8 @@ import React from "react";
 import Btn from "../../Button/btn";
 import Input from "../../Form/Input";
 import { MdContentCopy } from "react-icons/md";
-const Address = ({ nextSlide }) => {
+const Address = ({ nextSlide, addressDetails }) => {
+  console.log(addressDetails);
   return (
     <div>
       <h2 className='text-xl font-medium my-4'>US Address</h2>
@@ -22,6 +23,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='Full Name'
                 required={true}
+                value={addressDetails?.full_name}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -35,6 +38,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='Unique Code'
                 required={true}
+                value={addressDetails?.unique_code}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -48,6 +53,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='Address'
                 required={true}
+                value={addressDetails?.address}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -61,6 +68,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='Phone Number'
                 required={true}
+                value={addressDetails?.phone_number}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -74,6 +83,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='City'
                 required={true}
+                value={addressDetails?.city}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -87,6 +98,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='State'
                 required={true}
+                value={addressDetails?.state}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -96,10 +109,11 @@ const Address = ({ nextSlide }) => {
               <Input
                 input
                 id='zip'
-                type='number'
                 className={"bg-gray-100"}
                 title='Zip Code'
                 required={true}
+                value={addressDetails?.zip_code}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />
@@ -113,6 +127,8 @@ const Address = ({ nextSlide }) => {
                 className={"bg-gray-100"}
                 title='Country'
                 required={true}
+                value={addressDetails?.country}
+                readOnly={true}
               />
               <i className='text-gray-400 absolute bottom-8 right-4'>
                 <MdContentCopy />

@@ -15,6 +15,7 @@ const Home = () => {
   const [inputItems, setInputItems] = useState({});
   const [allCategories, setAllCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [addressDetails, setAddressDetails] = useState({});
 
   const { token } = useSelector((state) => state.auth);
 
@@ -50,19 +51,18 @@ const Home = () => {
   const createShipment = async () => {
     console.log("first");
     setIsLoading(true);
-    console.log(inputItems);
-
     const selectedCategory = allCategories?.find(
       (cat) => cat.category_name === inputItems.category
     );
     const category_id = selectedCategory?.id || "0";
-    const data = { ...inputItems, category_id };
+    const inputs = { ...inputItems, category_id };
     const url = `${baseUrl}create-shipment`;
     let msg;
     try {
-      const res = await axios.post(url, data, config);
-      console.log(res);
+      const { data } = await axios.post(url, inputs, config);
+      // console.log(res);
       setIsLoading(false);
+      setAddressDetails(data.data);
       msg = "Shipment created successfully";
       toast.success(msg);
       nextSlide();
@@ -100,7 +100,7 @@ const Home = () => {
           isLoading={isLoading}
         />
       ) : activeSlide === 3 ? (
-        <Address nextSlide={nextSlide} />
+        <Address addressDetails={addressDetails} nextSlide={nextSlide} />
       ) : (
         <ShipmentSuccess setActiveSlide={setActiveSlide} />
       )}

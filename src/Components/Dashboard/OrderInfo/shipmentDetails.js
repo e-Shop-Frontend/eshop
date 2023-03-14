@@ -42,7 +42,7 @@ const ShipmentDetails = ({
       const shipmentCategory = data.find(
         (cat) => cat.id == singleOrder?.category_id
       );
-      setCategory(shipmentCategory.category_name || "null");
+      setCategory(shipmentCategory?.category_name || "null");
     } catch (error) {
       console.log(error);
     }
