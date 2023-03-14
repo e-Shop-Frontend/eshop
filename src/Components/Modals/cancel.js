@@ -8,6 +8,7 @@ const CancelModal = ({
   closeModal,
   modalAction,
   modalText,
+  loadingState,
 }) => {
   return (
     <div
@@ -41,6 +42,7 @@ const CancelModal = ({
           <Btn
             onClick={modalAction}
             text={modalText}
+            loadingState={loadingState}
             className='bg-red-600 text-white font-medium text-xs'
           />
         </div>

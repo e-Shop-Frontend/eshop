@@ -4,15 +4,20 @@ import { setLocation } from "../../../Redux/features/dashboardSlice";
 import Btn from "../../Button/btn";
 import Input from "../../Form/Input";
 
-const CreateShipment = ({ nextSlide, handleInputChange, inputItems }) => {
+const CreateShipment = ({
+  handleInputChange,
+  inputItems,
+  allCategories,
+  handleSubmit,
+  isLoading,
+}) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(setLocation("Create Shipment"));
   }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    nextSlide();
-  };
+
+  const categories = allCategories?.map((category) => category.category_name);
 
   return (
     <div>
@@ -35,9 +40,9 @@ const CreateShipment = ({ nextSlide, handleInputChange, inputItems }) => {
           <Input
             id='category'
             dropdown
-            data={["Clothing", "Bags", "Shoes ", "Furniture", "Others"]}
+            data={["select", ...categories, "others"]}
             type='text'
-            className={"bg-gray-100"}
+            className={"bg-gray-100 capitalize"}
             title='Category'
             required={true}
             setItem={handleInputChange}
@@ -67,7 +72,11 @@ const CreateShipment = ({ nextSlide, handleInputChange, inputItems }) => {
             setItem={handleInputChange}
             value={inputItems.quantity || ""}
           />
-          <Btn text={"Continue"} className='w-full bg-pry my-6' />
+          <Btn
+            loadingState={isLoading}
+            text={"Continue"}
+            className='w-full bg-pry my-6'
+          />
         </form>
       </div>
     </div>

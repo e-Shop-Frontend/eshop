@@ -12,15 +12,19 @@ const Address = () => {
   const [inputItems, setInputItems] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [allAddress, setAllAddress] = useState([]);
+  const [allCountries, setAllCountries] = useState([]);
+
   const nextSlide = () => {
     setActiveSlide(activeSlide + 1);
   };
+
   const prevSlide = () => {
     setActiveSlide(activeSlide - 1);
   };
 
   const handleInputChange = (e) => {
     setInputItems({ ...inputItems, [e.target.name]: e.target.value });
+    console.log(inputItems);
   };
   const [savedAddress, setSavedAddress] = useState(false);
 
@@ -35,13 +39,13 @@ const Address = () => {
     setIsLoading(true);
     const url = `${baseUrl}add-address`;
     let msg;
+    const selectedCountry = allCountries.find(
+      (country) => country.name === inputItems.country
+    );
+    const country_id = selectedCountry.id;
+
     try {
-      const res = await axios.post(
-        url,
-        { ...inputItems, country_id: "1" },
-        config
-      );
-      console.log(res);
+      const res = await axios.post(url, { ...inputItems, country_id }, config);
       msg = res.data.message;
       toast.success(msg);
       setIsLoading(false);
@@ -67,8 +71,22 @@ const Address = () => {
     }
   };
 
+  const getAllCountries = async () => {
+    const url = `${baseUrl}get-country`;
+    try {
+      const res = await axios.get(url);
+      setAllCountries(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAddress();
+  }, [activeSlide]);
+
+  useEffect(() => {
+    getAllCountries();
   }, []);
 
   useEffect(() => {
@@ -84,6 +102,7 @@ const Address = () => {
           savedAddress={savedAddress}
           nextSlide={nextSlide}
           inputItems={inputItems}
+          allAddress={allAddress}
         />
       )}
       {activeSlide === 1 && (
@@ -94,6 +113,7 @@ const Address = () => {
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
           isLoading={isLoading}
+          allCountries={allCountries}
         />
       )}
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Btn from "../../Button/btn";
 import Input from "../../Form/Input";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,7 +11,14 @@ const NewAddress = ({
   handleSubmit,
   inputItems,
   isLoading,
+  allCountries,
 }) => {
+  const [countries, setCountries] = useState([]);
+  useEffect(() => {
+    const newCountries = allCountries.map((country) => country.name);
+    setCountries(newCountries);
+  }, [allCountries]);
+
   return (
     <div>
       <h2 className='2xl font-medium'>Add New Address</h2>
@@ -60,7 +67,7 @@ const NewAddress = ({
         <Input
           type='text'
           dropdown
-          data={["Select a country", "Nigeria", "USA"]}
+          data={["Select", ...countries]}
           title={"Country"}
           id='country'
           className={"border-2"}

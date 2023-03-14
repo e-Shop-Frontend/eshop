@@ -1,7 +1,13 @@
 import React from "react";
+import { Spinner } from "react-activity";
 import SingleShipment from "./singleShipment";
 
-const OrderBase = ({ setActiveSlide }) => {
+const OrderBase = ({
+  setActiveSlide,
+  getSingleOrder,
+  allOrders,
+  isLoading,
+}) => {
   const orderHeader = [
     "S/N",
     "Date",
@@ -12,26 +18,7 @@ const OrderBase = ({ setActiveSlide }) => {
     "Payment Staus",
     "Status",
   ];
-  const orderContent = [
-    {
-      date: "04/03/2023",
-      uniqueCode: "3342",
-      trackingID: "xxxxxxx",
-      dimension: "12 LBS",
-      amount: "₦1000",
-      paymentStatus: "Pending",
-      status: "Pending",
-    },
-    {
-      date: "10/03/2023",
-      uniqueCode: "3342",
-      trackingID: "xxxxxxx",
-      dimension: "32 LBS",
-      amount: "₦35000",
-      paymentStatus: "Pending",
-      status: "Pending",
-    },
-  ];
+
   return (
     <div>
       <h2 className='font-medium text-2xl'>Order Info</h2>
@@ -53,14 +40,28 @@ const OrderBase = ({ setActiveSlide }) => {
             <hr className='my-4' />
           </div>
           <div className='min-w-[1200px]'>
-            {orderContent.map((item, index) => (
-              <SingleShipment
-                setActiveSlide={setActiveSlide}
-                item={item}
-                key={index}
-                index={index}
-              />
-            ))}
+            {isLoading ? (
+              <div className='flex flex-col items-center justify-center min-h-[300px]'>
+                {/* <h2>Loading Shipments...</h2> */}
+                <Spinner size={50} />
+              </div>
+            ) : allOrders?.length < 1 ? (
+              <h2>
+                No orders to display at the moment, please proceed to create a
+                shipment
+              </h2>
+            ) : (
+              allOrders?.map((item, index) => (
+                <SingleShipment
+                  setActiveSlide={setActiveSlide}
+                  item={item}
+                  key={index}
+                  index={index}
+                  getSingleOrder={getSingleOrder}
+                  isLoading={isLoading}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>

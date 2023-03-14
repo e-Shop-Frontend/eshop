@@ -10,11 +10,20 @@ import { useEffect } from "react";
 import ErrorModal from "../../Modals/errorModal";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-const ShipmentDetails = ({ setActiveSlide }) => {
+import { Spinner } from "react-activity";
+import { baseUrl } from "../../../Utils/constants";
+const ShipmentDetails = ({
+  setActiveSlide,
+  isLoading,
+  singleOrder,
+  cancelShipment,
+  cancelLoader,
+}) => {
   const [isModalShown, setIsModalShown] = useState(false);
   const [isPayModalShown, setIsPayModalShown] = useState(false);
   const [isPaymentModal, setIsPaymentModal] = useState(false);
   const [isErrorModal, setIsErrorModal] = useState(false);
+  const [category, setCategory] = useState("");
   const navigate = useNavigate();
 
   const makePayment = () => {
@@ -24,6 +33,32 @@ const ShipmentDetails = ({ setActiveSlide }) => {
       navigate("/dashboard");
     }, 3000);
   };
+
+  const getAllCategories = async () => {
+    const url = `${baseUrl}get-category`;
+    try {
+      const res = await fetch(url);
+      const { data } = await res.json();
+      const shipmentCategory = data.find(
+        (cat) => cat.id == singleOrder?.category_id
+      );
+      setCategory(shipmentCategory.category_name || "null");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCategories();
+  }, [isLoading, singleOrder]);
+
+  if (isLoading) {
+    return (
+      <div className='flex flex-col items-center justify-center min-h-[400px]'>
+        <Spinner size={50} />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -39,7 +74,7 @@ const ShipmentDetails = ({ setActiveSlide }) => {
             <h2 className='text-base font-medium'>Ship from</h2>
           </div>
           <p className='my-3'>
-            109,Country club road Indianapolis, Indiana <br /> +(317)529-2934
+            {/* 109,Country club road Indianapolis, Indiana <br /> +(317)529-2934 */}
           </p>
         </div>
         <div>
@@ -50,8 +85,8 @@ const ShipmentDetails = ({ setActiveSlide }) => {
             <h2 className='text-base font-medium'>Ship to</h2>
           </div>
           <p className='my-3'>
-            17, Ibikunle street Ikeja, Lagos <br />
-            +2348020309067
+            {/* 17, Ibikunle street Ikeja, Lagos <br />
+            +2348020309067 */}
           </p>
         </div>
         <div>
@@ -62,8 +97,12 @@ const ShipmentDetails = ({ setActiveSlide }) => {
             <h2 className='text-base font-medium'>Item details</h2>
           </div>
           <p className='my-3'>
-            Store name: Mark and Spencer Category: Shoe and bag Specification:
-            Two shoe and two bag Quantity: 7
+            Store name:
+            <span className='capitalize'> {singleOrder?.store_name} </span>{" "}
+            <br />
+            Category: <span className='capitalize'>{category}</span> <br />
+            Specification:
+            <span className='capitalize'>{singleOrder?.specification}</span>
           </p>
         </div>
       </div>
@@ -83,12 +122,10 @@ const ShipmentDetails = ({ setActiveSlide }) => {
 
       <CancelModal
         visibilityState={isModalShown}
-        modalAction={() => {
-          console.log("Shipment Cancelled");
-          setActiveSlide(0);
-        }}
+        modalAction={() => cancelShipment(singleOrder?.id)}
         closeModal={() => setIsModalShown(false)}
         modalText='Cancel Shipment'
+        loadingState={cancelLoader}
       />
       <DefaultModal
         visibilityState={isPayModalShown}

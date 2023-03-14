@@ -4,16 +4,55 @@ import amico from "../../../Assets/images/amico.png";
 import track from "../../../Assets/images/track.png";
 import { useState } from "react";
 import TrackShipment from "./trackShipment";
+import { useSelector } from "react-redux";
+import { baseUrl } from "../../../Utils/constants";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Shipment = ({ nextSlide }) => {
-  const details = [
-    { name: "Total Shipments", value: 0 },
-    { name: "Pending Shipments", value: 0 },
-    { name: "Cancelled Shipments", value: 0 },
-    { name: "Processed Shipments", value: 0 },
-    { name: "Delivered Shipments", value: 0 },
-  ];
+  const { token } = useSelector((state) => state.auth);
+  const [shipmentDetails, setShipmentDetails] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const getShipmentDetails = async () => {
+    const url = `${baseUrl}get-dashboard`;
+    try {
+      const res = await axios.get(url, config);
+      setShipmentDetails(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getShipmentDetails();
+  }, []);
+
+  const details = [
+    { name: "Total Shipments", value: shipmentDetails?.total_shipment || 0 },
+    {
+      name: "Pending Shipments",
+      value: shipmentDetails?.pending_shipment || 0,
+    },
+    {
+      name: "Cancelled Shipments",
+      value: shipmentDetails?.cancelled_shipment || 0,
+    },
+    {
+      name: "Processed Shipments",
+      value: shipmentDetails?.processed_shipment || 0,
+    },
+    {
+      name: "Delivered Shipments",
+      value: shipmentDetails?.delivered_shipment || 0,
+    },
+  ];
   return (
     <div>
       <Btn text='Create Shipment' className={"bg-pry"} onClick={nextSlide} />
